@@ -195,6 +195,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.nav_logout -> {
+
                 LogoutDialog()
             }
 
