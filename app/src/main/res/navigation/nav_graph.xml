@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.kapilhomes.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.kapilhomes.dashboard.DashboardFragment"
+        android:label="dashboard_fragment"
+        tools:layout="@layout/dashboard_fragment"
+
+        >
+        <action
+            android:id="@+id/action_dashboardFragment_to_plotsListFragment"
+            app:destination="@id/plotsListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plotsListFragment"
+        android:name="com.example.kapilhomes.venturelist.VentureListFragment"
+        android:label="plots_list_fragment"
+        tools:layout="@layout/venture_list_fragment" >
+        <action
+            android:id="@+id/action_plotsListFragment_to_layoutChartFragment"
+            app:destination="@id/layoutChartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/layoutChartFragment"
+        android:name="com.example.kapilhomes.layoutchart.LayoutChartFragment"
+        android:label="LayoutChartFragment" >
+        <action
+            android:id="@+id/action_layoutChartFragment_to_plotDetailsFragment"
+            app:destination="@id/plotDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plotDetailsFragment"
+        android:name="com.example.kapilhomes.plotdetails.PlotDetailsFragment"
+        android:label="PlotDetailsFragment" />
+</navigation>

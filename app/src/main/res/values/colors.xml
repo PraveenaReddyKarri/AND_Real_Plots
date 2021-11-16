@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="button">#1A2668</color>
+    <color name="blue">#253487</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="green">#09A60F</color>
+
+    <color name="colorPrimary">#9F8359</color>
+    <color name="colorPrimaryDark">#614B2A</color>
+    <color name="colorPrimaryLight">#C3A87F</color>
+    <color name="colorPrimaryDisable">#ABB4DB</color>
+    <color name="card_bg">#E9EBEF</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="vacent">#FFFF9800</color>
+    <color name="text_color">#ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#123</color>
+    <color name="react_gray">#697689</color>
+    <color name="app_color">#9F8359</color>
+    <color name="login_bg_light">#E45656</color>
+
+
+</resources>

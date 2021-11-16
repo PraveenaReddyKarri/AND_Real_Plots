@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.example.kapilhomes.layoutchart.LayoutChartFragment" />
+
+        <variable
+            name="uimodel"
+            type="com.example.kapilhomes.layoutchart.LayoutChartResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".layoutchart.LayoutChartFragment">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardElevation="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                tools:context=".login.LoginFragment">
+
+                <LinearLayout
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3.6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Layout Name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/phone_call"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@{uimodel.layoutname}"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/project_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3.6"
+                    app:layout_constraintBottom_toTopOf="@+id/land_name_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Project Type"
+
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@{uimodel.landpurchasetype}"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/land_name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3.6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/project_layout">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Land Name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@{uimodel.landname}"
+
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/total_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3.6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/land_name_layout">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="No.Of Plots"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_weight="2"
+
+                        android:text="@{uimodel.totalnoofplotunits}"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/card_view">-->
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardElevation="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view">
+
+            <!--                <ScrollView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content">-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+
+                >
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:orientation="vertical">-->
+
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:weightSum="2"-->
+                <!--                                android:orientation="horizontal">-->
+                <RadioGroup
+                    android:id="@+id/button_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <RadioButton
+                        android:id="@+id/All"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="All"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <RadioButton
+                        android:id="@+id/vacent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="Vacant"
+                        android:textStyle="bold"
+                        android:textColor="@color/vacent"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <!--                            </LinearLayout>-->
+
+                    <!--                            <LinearLayout-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:weightSum="2"-->
+                    <!--                                android:orientation="horizontal">-->
+
+
+                    <!--                            <RadioButton-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:text="Booked"-->
+                    <!--                                android:fontFamily="@font/raleway_bold"-->
+                    <!--                                android:layout_marginEnd="@dimen/_5sdp"-->
+
+                    <!--                                android:textSize="@dimen/_12sdp"-->
+                    <!--                                android:layout_weight="1"-->
+                    <!--                                android:id="@+id/booked"-->
+                    <!--                                android:textColor="@color/blue"-->
+                    <!--                                android:layout_height="wrap_content" />-->
+
+                    <!--                                <RadioButton-->
+                    <!--                                    android:layout_width="wrap_content"-->
+                    <!--                                    android:text="Register"-->
+                    <!--                                    android:fontFamily="@font/raleway_bold"-->
+                    <!--                                    android:layout_marginEnd="@dimen/_5sdp"-->
+                    <!--                                    android:textSize="@dimen/_12sdp"-->
+                    <!--                                    android:layout_weight="1"-->
+                    <!--                                    android:id="@+id/register"-->
+                    <!--                                    android:textColor="@color/blue"-->
+                    <!--                                    android:layout_height="wrap_content" />-->
+                    <!--                            </LinearLayout>-->
+                    <!--                            </LinearLayout>-->
+                </RadioGroup>
+
+
+                <RadioGroup
+                    android:id="@+id/button_layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/button_layout"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <RadioButton
+                        android:id="@+id/booked"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:text="Booked"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        />
+
+
+
+                    <RadioButton
+                        android:id="@+id/register"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="Registered"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        />
+
+
+                    <!--                            </LinearLayout>-->
+
+                    <!--                            <LinearLayout-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:weightSum="2"-->
+                    <!--                                android:orientation="horizontal">-->
+
+
+                    <!--                            <RadioButton-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:text="Booked"-->
+                    <!--                                android:fontFamily="@font/raleway_bold"-->
+                    <!--                                android:layout_marginEnd="@dimen/_5sdp"-->
+
+                    <!--                                android:textSize="@dimen/_12sdp"-->
+                    <!--                                android:layout_weight="1"-->
+                    <!--                                android:id="@+id/booked"-->
+                    <!--                                android:textColor="@color/blue"-->
+                    <!--                                android:layout_height="wrap_content" />-->
+
+                    <!--                                <RadioButton-->
+                    <!--                                    android:layout_width="wrap_content"-->
+                    <!--                                    android:text="Register"-->
+                    <!--                                    android:fontFamily="@font/raleway_bold"-->
+                    <!--                                    android:layout_marginEnd="@dimen/_5sdp"-->
+                    <!--                                    android:textSize="@dimen/_12sdp"-->
+                    <!--                                    android:layout_weight="1"-->
+                    <!--                                    android:id="@+id/register"-->
+                    <!--                                    android:textColor="@color/blue"-->
+                    <!--                                    android:layout_height="wrap_content" />-->
+                    <!--                            </LinearLayout>-->
+                    <!--                            </LinearLayout>-->
+                </RadioGroup>
+
+
+                <TextView
+                    android:id="@+id/noDataFound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_150sdp"
+                    android:textSize="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@string/no_plots_found"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/grid_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_layout1" />
+
+                <androidx.recyclerview.widget.RecyclerView xmlns:grid="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/grid_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_layout1"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_200sdp"
+                    android:scrollbars="vertical"
+                    grid:columnCount="4" />
+
+            </RelativeLayout>
+            <!--                </ScrollView>-->
+
+        </androidx.cardview.widget.CardView>
+        <!--        </LinearLayout>-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

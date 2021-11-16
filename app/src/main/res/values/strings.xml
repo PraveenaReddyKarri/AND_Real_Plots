@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">HexaBUILD</string>
+
+
+    <style name="text_input_style_login" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/react_gray</item>
+
+    </style>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="square_meter">Square Meter %s</string>
+    <string name="loading">loading</string>
+    <string name="no_plots_found">No Plots found</string>
+    <string name="version">version</string>
+    <string name="enter_your_password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="layouts">Layouts</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="server_is_currently_unavailible_n_or_internet_access_is_denied">Server is currently unavailible \n or \nInternet access is denied</string>
+    <string name="serverdown">ServerDown</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_data_found">No data found</string>
+</resources>

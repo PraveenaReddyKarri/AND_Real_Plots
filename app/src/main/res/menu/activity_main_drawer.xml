@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+<!--    <group android:checkableBehavior="single">-->
+
+<!--        <item-->
+<!--            android:id="@+id/dashboard"-->
+<!--            android:icon="@drawable/ic_baseline_home_24"-->
+<!--            android:title="@string/dashboard" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/layout"-->
+<!--            android:icon="@drawable/ic_baseline_layers_24"-->
+<!--            android:title="Layouts" />-->
+
+<!--        <item-->
+<!--            android:id="@+id/logout"-->
+<!--            android:icon="@drawable/logoutnew"-->
+<!--            android:title="Logout" />-->
+
+
+<!--    </group>-->
+</menu>
