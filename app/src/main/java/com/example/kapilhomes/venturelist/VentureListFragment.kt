@@ -43,7 +43,7 @@ class VentureListFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Layouts"
 
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(true)
 
         return binding?.root
     }

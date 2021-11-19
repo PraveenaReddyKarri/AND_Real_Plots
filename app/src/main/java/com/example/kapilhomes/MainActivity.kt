@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.kapilhomes.dashboard.DashboardFragment
 import com.example.kapilhomes.databinding.ActivityMainBinding
+import com.example.kapilhomes.newreferal.NewReferral
 import com.example.kapilhomes.utils.SharedPref
 import com.example.kapilhomes.venturelist.VentureListFragment
 import com.google.android.material.navigation.NavigationView
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         hView!!.findViewById<View>(R.id.dashboard).setOnClickListener(this)
         hView!!.findViewById<View>(R.id.layouts).setOnClickListener(this)
         hView!!.findViewById<View>(R.id.nav_logout).setOnClickListener(this)
+        hView!!.findViewById<View>(R.id.newrefferels).setOnClickListener(this)
 
 
         navHostFragment =
@@ -127,6 +128,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
@@ -193,6 +195,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
                 }
             }
+
+            R.id.newrefferels -> {
+                navHostFragment.let { navFragment ->
+                    navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
+
+                        if (fragment !is NewReferral)
+                            navHostFragment.navController.navigate(R.id.newReferral)
+
+                    }
+                }
+            }
+
 
             R.id.nav_logout -> {
 

@@ -27,6 +27,7 @@
         <action
             android:id="@+id/action_dashboardFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/plotsListFragment"
@@ -49,4 +50,8 @@
         android:id="@+id/plotDetailsFragment"
         android:name="com.example.kapilhomes.plotdetails.PlotDetailsFragment"
         android:label="PlotDetailsFragment" />
+    <fragment
+        android:id="@+id/newReferral"
+        android:name="com.example.kapilhomes.newreferal.NewReferral"
+        android:label="NewReferral" />
 </navigation>

@@ -7,17 +7,14 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.example.kapilhomes.BuildConfig
-import com.example.kapilhomes.MainActivity
 import com.example.kapilhomes.R
 import com.example.kapilhomes.databinding.LoginnFragmentBinding
 import com.example.kapilhomes.utils.InternetConnection
@@ -67,7 +64,10 @@ class LoginFragment : Fragment() {
                     Toast.makeText(getActivity(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
 
                 } else {
+                    viewModel.getId( binding?.usernameEditText?.getText().toString())
+
                     saveResponseInSharedPref(response, view)
+
                     /*  Navigation.findNavController(view)
                         .navigate(R.id.action_loginFragment_to_dashboardFragment)*/
 //                    Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_SHORT).show()
@@ -76,6 +76,48 @@ class LoginFragment : Fragment() {
 
             } else {
                 Toast.makeText(getActivity(), "Unauthorized User", Toast.LENGTH_SHORT).show();
+
+            }
+        })
+
+
+        viewModel.data.observe(viewLifecycleOwner, {
+//            Utils.closeProgressBar()
+            val pref: SharedPref? = context?.let { SharedPref(it).getmSharedPrefInstance() }
+
+            if (it.isSuccessful) {
+                val response: ArrayList<GetUserIdResponse> = it.body()!!
+
+                if(response.size>0){
+                    pref?.setCreatedbyId(response.get(0).pUserID)
+                    pref?.setIntrocudedId(response.get(0).pContactID)
+
+                }
+
+                navHostFragment =
+                    (activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
+                val inflater = navHostFragment.navController.navInflater
+                val graph = inflater.inflate(R.navigation.nav_graph)
+
+
+                graph.startDestination = R.id.dashboardFragment
+
+
+
+                navHostFragment.navController.graph = graph
+
+
+                if (response.toString().isEmpty()) {
+                    Toast.makeText(getActivity(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            } else {
+                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
 
             }
         })
@@ -89,21 +131,14 @@ class LoginFragment : Fragment() {
 
         pref?.setLoginUserName(response.pUserName)
         pref?.setUserId(response.pUserID)
+        pref?.setAccessKey(response.pToken)
+
+
+
 //        pref?.setValue(SharedPref().,response.pUserName)
 //        getActivity()?.getViewModelStore()?.clear()
 
 
-        navHostFragment =
-            (activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
-        val inflater = navHostFragment.navController.navInflater
-        val graph = inflater.inflate(R.navigation.nav_graph)
-
-
-            graph.startDestination = R.id.dashboardFragment
-
-
-
-        navHostFragment.navController.graph = graph
 
 
 //        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_dashboardFragment)
@@ -125,7 +160,7 @@ class LoginFragment : Fragment() {
                     binding?.passwordEditText?.getText().toString()
                 )
 
-                if (InternetConnection().isNetworkConnected(activity)) {
+                if (InternetConnection().isNetworkConnected(requireActivity())) {
 //            binding?.signUpButton?.setVisibility(View.INVISIBLE)
 //                    Utils.showProgressBar(context)
 

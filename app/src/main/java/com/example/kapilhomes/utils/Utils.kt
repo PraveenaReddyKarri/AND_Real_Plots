@@ -2,6 +2,8 @@ package com.example.kapilhomes.utils
 
 import android.content.Context
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import com.example.kapilhomes.R
 import java.text.DateFormat
@@ -138,6 +140,10 @@ object Utils {
         return null
     }
 
+    fun hideKeyboard(view: View) {
+        val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 
 }
 
