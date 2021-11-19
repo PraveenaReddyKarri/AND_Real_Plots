@@ -8,6 +8,7 @@ import com.example.kapilhomes.servicesapi.RetrofitInstanceTwo
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response
+import retrofit2.http.Query
 
 class NewReferralViewModel : ViewModel() {
     val response: MutableLiveData<Response<ArrayList<NewReferralResponse>>> = MutableLiveData()
@@ -47,10 +48,10 @@ class NewReferralViewModel : ViewModel() {
     }
 
 
-    fun panValidation(panValidateRequest: PanValidateRequest) {
+    fun panValidation(Plotno: String,LayoutId: String) {
         viewModelScope.launch {
             try {
-                pan.postValue((RetrofitInstanceTwo.api.panCheck(panValidateRequest)))
+                pan.postValue((RetrofitInstanceTwo.api.panCheck(Plotno,LayoutId)))
             } catch (exception: HttpException) {
 
             }

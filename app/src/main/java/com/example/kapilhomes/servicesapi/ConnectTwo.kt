@@ -44,8 +44,8 @@ interface ConnectTwo {
     @POST("/api/loans/masters/contactmasterNew/GetPersonCount")
     suspend fun mobileCheck(@Body mobileValidateRequest: MobileValidateRequest): Response<String>
 
-    @POST("/api/loans/masters/contactmasterNew/CheckDocumentExist")
-    suspend fun panCheck(@Body panValidateRequest: PanValidateRequest): Response<String>
+    @GET("/api/loans/masters/contactmasterNew/CheckDocumentExist")
+    suspend fun panCheck(@Query("DocumentId")DocumentId: String,@Query("ReferenceNo")ReferenceNo: String): Response<String>
 
 
     //    8767666567

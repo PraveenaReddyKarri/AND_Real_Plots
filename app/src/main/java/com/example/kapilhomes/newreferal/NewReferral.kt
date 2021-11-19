@@ -22,7 +22,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
-class NewReferral : Fragment() {
+class NewReferral : Fragment() ,TextWatcher{
     private var binding: NewReferralFragmentBinding? = null
 
 
@@ -43,7 +43,8 @@ class NewReferral : Fragment() {
         binding?.fragment = this
         setHasOptionsMenu(true)
 
-//        binding?.usernameEditText?.addTextChangedListener(this)
+        binding?.usernameEditText?.addTextChangedListener(this)
+        binding?.surnameEditText?.addTextChangedListener(this)
 
 
         return binding?.root
@@ -63,7 +64,7 @@ class NewReferral : Fragment() {
 
                 val user: ArrayList<String> = ArrayList()
 
-                for (i in 0..response.size) {
+                for (i in 0..response.size-1) {
                     user.add(response.get(i).pTitleName)
                 }
 //                binding?.titlespinner?.
@@ -216,7 +217,7 @@ class NewReferral : Fragment() {
 
 
         )
-        viewModel.panValidation(request1)
+        viewModel.panValidation("3",binding?.panEditText?.getText().toString())
     }
 
 
@@ -298,7 +299,7 @@ class NewReferral : Fragment() {
                     } else {
                         Toast.makeText(
                             activity,
-                            "Mobile number must be 10 chars",
+                            "Enter valid mobile number",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -324,15 +325,22 @@ class NewReferral : Fragment() {
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
 
-//    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//    }
-//
-//    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//
-//
-//    }
-//
-//    override fun afterTextChanged(s: Editable?) {
-//    }
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+
+    }
+    override fun afterTextChanged(s: Editable?) {
+        if(s.toString().equals(" "))
+        {
+            if(binding?.usernameEditText?.hasFocus()!!){
+                binding?.usernameEditText!!.setText("");
+            }else if(binding!!.surnameEditText.hasFocus()){
+                binding?.surnameEditText!!.setText("");
+            }
+        }
+    }
 
 }
