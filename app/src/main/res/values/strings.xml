@@ -23,7 +23,7 @@
     <string name="serverdown">ServerDown</string>
     <string name="try_again">Try Again</string>
     <string name="no_data_found">No data found</string>
-    <string name="letters_numbers_no_space">QWERTYUIOPASDFGHJKLZXCVBNM0123456789</string>
+    <string name="letters_numbers_no_space">QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789</string>
     <string name="save">Save</string>
     <string name="letters_numbers">QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm</string>
 

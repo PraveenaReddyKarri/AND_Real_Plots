@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kapilhomes.layoutchart.LayoutChartResponse
 import com.example.kapilhomes.servicesapi.RetrofitInstance
+import com.example.kapilhomes.servicesapi.RetrofitInstanceTwo
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response

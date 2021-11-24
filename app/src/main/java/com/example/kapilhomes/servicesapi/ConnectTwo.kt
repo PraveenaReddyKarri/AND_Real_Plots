@@ -1,12 +1,12 @@
 package com.example.kapilhomes.servicesapi
 
-import com.example.kapilhomes.layoutchart.LayoutChartResponse
 import com.example.kapilhomes.login.GetUserIdResponse
 import com.example.kapilhomes.login.LoginRequest
 import com.example.kapilhomes.login.LoginResponse
-import com.example.kapilhomes.newreferal.*
-import com.example.kapilhomes.plotdetails.PlotDetailsResponse
-import com.example.kapilhomes.venturelist.VentureListResponse
+import com.example.kapilhomes.newreferal.MobileValidateRequest
+import com.example.kapilhomes.newreferal.NewReferralRequest
+import com.example.kapilhomes.newreferal.NewReferralResponse
+import com.example.kapilhomes.newreferal.TitlesResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -29,6 +29,8 @@ interface ConnectTwo {
 //    suspend fun getplotDetails(@Query("Plotno")Plotno: String,@Query("LayoutId")LayoutId: String): Response<ArrayList<PlotDetailsResponse>>
 
 
+
+    //LIVE
     @POST("/api/login")
     suspend fun userLogin(@Body loginRequest: LoginRequest): Response<LoginResponse>
 
@@ -36,21 +38,19 @@ interface ConnectTwo {
     suspend fun getUsers(@Query("username")username: String): Response<ArrayList<GetUserIdResponse>>
 
 
-
-
     @POST("/api/loans/masters/contactmasterNew/Saveappcontact")
     suspend fun newReferraldata(@Body newReferralRequest: NewReferralRequest): Response<ArrayList<NewReferralResponse>>
 
     @POST("/api/loans/masters/contactmasterNew/GetPersonCount")
-    suspend fun mobileCheck(@Body mobileValidateRequest: MobileValidateRequest): Response<String>
+   suspend fun mobileCheck(@Body mobileValidateRequest: MobileValidateRequest): Response<String>
 
-    @GET("/api/loans/masters/contactmasterNew/CheckDocumentExist")
+
+   @GET("/api/loans/masters/contactmasterNew/CheckDocumentExist")
     suspend fun panCheck(@Query("DocumentId")DocumentId: String,@Query("ReferenceNo")ReferenceNo: String): Response<String>
 
 
-    //    8767666567
+
  @GET("api/Settings/getContacttitles")
     suspend fun getTitles(): Response<ArrayList<TitlesResponse>>
-
-//    8466999733
+//LIVE
 }

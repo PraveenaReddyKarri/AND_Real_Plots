@@ -18,8 +18,10 @@ import com.example.kapilhomes.databinding.NewReferralFragmentBinding
 import com.example.kapilhomes.utils.InternetConnection
 import com.example.kapilhomes.utils.SharedPref
 import com.example.kapilhomes.utils.Utils
+import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 
 
 class NewReferral : Fragment() ,TextWatcher{
@@ -204,7 +206,7 @@ class NewReferral : Fragment() ,TextWatcher{
                 .toString()
                     + " " +
                     binding?.surnameEditText?.getText().toString(),
-            pPanNumber = binding?.panEditText?.getText().toString(),
+            pPanNumber = binding?.panEditText?.getText().toString().toUpperCase(Locale.ROOT),
             pintroducedid = introducedid
         )
         viewModel.saveData(request)
@@ -224,7 +226,7 @@ class NewReferral : Fragment() ,TextWatcher{
     fun saveData(view: View) {
 
 
-        val s = binding?.panEditText?.getText().toString().trim() // get your editext value here
+        val s = binding?.panEditText?.getText().toString().toUpperCase(Locale.ROOT) // get your editext value here
 
         val pattern = Pattern.compile("[A-Z]{5}[0-9]{4}[A-Z]{1}")
 
