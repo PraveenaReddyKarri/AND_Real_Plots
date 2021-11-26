@@ -357,7 +357,7 @@
                         android:layout_weight="1"
                         android:text="Booked"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/green"
                         android:textSize="@dimen/_12sdp"
                         />
 

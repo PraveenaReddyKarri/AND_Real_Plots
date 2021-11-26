@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HexaBUILD</string>
+    <string name="app_name">GR Group</string>
 
 
     <style name="text_input_style_login" parent="Theme.AppCompat.Light.NoActionBar">
@@ -26,9 +26,10 @@
     <string name="letters_numbers_no_space">QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789</string>
     <string name="save">Save</string>
     <string name="letters_numbers">QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm</string>
-
-
-
+    <string name="surname">Surname*</string>
+    <string name="mobile_no">Mobile No.*</string>
+    <string name="pan_no">PAN No.</string>
+    <string name="name">Name*</string>
 
 
     <string-array name="amount_arrays">

@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 //        val window: Window = MainActivity.getWindow()
-        window.statusBarColor = ContextCompat.getColor(this, R.color.app_color)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
         hView = binding?.navView?.getHeaderView(0)
 
         val release = hView!!.findViewById<TextView>(R.id.version)

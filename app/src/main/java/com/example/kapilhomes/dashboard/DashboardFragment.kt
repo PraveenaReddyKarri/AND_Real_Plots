@@ -13,7 +13,7 @@ import com.example.kapilhomes.databinding.DashboardFragmentBinding
 import com.example.kapilhomes.utils.SharedPref
 
 
-class DashboardFragment : Fragment()  {
+class DashboardFragment : Fragment() {
 
     var binding: DashboardFragmentBinding? = null;
 
@@ -40,11 +40,15 @@ class DashboardFragment : Fragment()  {
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
 
+        binding?.ventures?.setBackgroundResource(R.drawable.card_bg)
+        binding?.newreferral?.setBackgroundResource(R.drawable.card_referral)
+
+
         viewModel.data.observe(viewLifecycleOwner, {
             binding?.view = it
 
         })
-
+        gotoRefferals()
         onClick()
 
     }
@@ -69,18 +73,17 @@ class DashboardFragment : Fragment()  {
         }
 
 
-
-    }
-
-    fun goNext(){
-        binding?.ventures?.performClick()
     }
 
 
+    fun gotoRefferals() {
 
+        binding?.newreferral?.setOnClickListener { view ->
+            Navigation.findNavController(view)
+                .navigate(R.id.action_dashboardFragment_to_newReferral)
 
-
-
+        }
+    }
 
 
 }

@@ -100,7 +100,8 @@
                                 android:id="@+id/usernameEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Name*"
+                                android:hint="@string/name"
+
                                 android:digits="@string/letters_numbers"
                                 android:inputType="textPersonName"
                                 android:singleLine="true"
@@ -122,7 +123,7 @@
                                 android:id="@+id/surnameEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="SurName*"
+                                android:hint="@string/surname"
                                 android:digits="@string/letters_numbers"
 
                                 android:inputType="textPersonName"
@@ -144,7 +145,7 @@
                                 android:id="@+id/mobileEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Mobile No.*"
+                                android:hint="@string/mobile_no"
                                 android:digits="0123456789"
                                 android:inputType="phone"
 
@@ -186,7 +187,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:digits="@string/letters_numbers_no_space"
-                                android:hint="Pan No."
+                                android:hint="@string/pan_no"
 
                                 android:maxLength="10" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -201,6 +202,7 @@
                             android:backgroundTint="@color/button"
                             android:onClick="@{(view)->fragment.saveData(view)}"
                             android:text="@string/save"
+                            android:fontFamily="@font/raleway_bold"
                             android:textColor="@color/white" />
 
 
