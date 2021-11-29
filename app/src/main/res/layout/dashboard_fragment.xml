@@ -8,11 +8,11 @@
 
         <variable
             name="model"
-            type="com.example.kapilhomes.dashboard.DashboardFragment" />
+            type="com.grgroup.kapilhomes.dashboard.DashboardFragment" />
 
         <variable
             name="view"
-            type="com.example.kapilhomes.dashboard.Dasboarddata" />
+            type="com.grgroup.kapilhomes.dashboard.Dasboarddata" />
     </data>
 
 

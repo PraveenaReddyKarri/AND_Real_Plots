@@ -9,8 +9,8 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.kapilhomes"
-        minSdkVersion 28
+        applicationId "com.grgroup.kapilhomes"
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"

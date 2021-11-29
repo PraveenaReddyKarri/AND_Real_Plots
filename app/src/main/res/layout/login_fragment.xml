@@ -9,7 +9,7 @@
 
         <variable
             name="model"
-            type="com.example.kapilhomes.login.LoginFragment" />
+            type="com.grgroup.kapilhomes.login.LoginFragment" />
 
     </data>
 

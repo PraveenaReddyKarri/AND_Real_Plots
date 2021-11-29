@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.example.kapilhomes.venturelist.VentureListFragment" />
+            type="com.grgroup.kapilhomes.venturelist.VentureListFragment" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

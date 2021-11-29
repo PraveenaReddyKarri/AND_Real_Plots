@@ -5,16 +5,16 @@
 
     <data>
 
-        <import type="com.example.kapilhomes.utils.Utils" />
+        <import type="com.grgroup.kapilhomes.utils.Utils" />
 
 
         <variable
             name="fragment"
-            type="com.example.kapilhomes.plotdetails.PlotDetailsFragment" />
+            type="com.grgroup.kapilhomes.plotdetails.PlotDetailsFragment" />
 
         <variable
             name="uimodel"
-            type="com.example.kapilhomes.plotdetails.PlotDetailsResponse" />
+            type="com.grgroup.kapilhomes.plotdetails.PlotDetailsResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

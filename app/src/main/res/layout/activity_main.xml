@@ -8,7 +8,7 @@
 
         <variable
             name="model"
-            type="com.example.kapilhomes.MainActivity" />
+            type="com.grgroup.kapilhomes.MainActivity" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
