@@ -7,11 +7,11 @@
 
         <variable
             name="model"
-            type="com.grgroup.kapilhomes.venturelist.VentureListResponse" />
+            type="com.grgroup.hexabuild.venturelist.VentureListResponse" />
 
         <variable
             name="data"
-            type="com.grgroup.kapilhomes.venturelist.VentureAdapter" />
+            type="com.grgroup.hexabuild.venturelist.VentureAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

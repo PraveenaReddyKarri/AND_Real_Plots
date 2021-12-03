@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.grgroup.kapilhomes.login.LoginFragment"
+        android:name="com.grgroup.hexabuild.login.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.grgroup.kapilhomes.dashboard.DashboardFragment"
+        android:name="com.grgroup.hexabuild.dashboard.DashboardFragment"
         android:label="dashboard_fragment"
         tools:layout="@layout/dashboard_fragment"
 
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/plotsListFragment"
-        android:name="com.grgroup.kapilhomes.venturelist.VentureListFragment"
+        android:name="com.grgroup.hexabuild.venturelist.VentureListFragment"
         android:label="plots_list_fragment"
         tools:layout="@layout/venture_list_fragment" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/layoutChartFragment"
-        android:name="com.grgroup.kapilhomes.layoutchart.LayoutChartFragment"
+        android:name="com.grgroup.hexabuild.layoutchart.LayoutChartFragment"
         android:label="LayoutChartFragment" >
         <action
             android:id="@+id/action_layoutChartFragment_to_plotDetailsFragment"
@@ -51,10 +51,10 @@
     </fragment>
     <fragment
         android:id="@+id/plotDetailsFragment"
-        android:name="com.grgroup.kapilhomes.plotdetails.PlotDetailsFragment"
+        android:name="com.grgroup.hexabuild.plotdetails.PlotDetailsFragment"
         android:label="PlotDetailsFragment" />
     <fragment
         android:id="@+id/newReferral"
-        android:name="com.grgroup.kapilhomes.newreferal.NewReferral"
+        android:name="com.grgroup.hexabuild.newreferal.NewReferral"
         android:label="NewReferral" />
 </navigation>

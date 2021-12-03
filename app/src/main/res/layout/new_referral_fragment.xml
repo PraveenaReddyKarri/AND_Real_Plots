@@ -9,15 +9,15 @@
 
         <variable
             name="fragment"
-            type="com.grgroup.kapilhomes.newreferal.NewReferral" />
+            type="com.grgroup.hexabuild.newreferal.NewReferral" />
 
         <variable
             name="model"
-            type="com.grgroup.kapilhomes.newreferal.NewReferralRequest" />
+            type="com.grgroup.hexabuild.newreferal.NewReferralRequest" />
 
         <variable
             name="model2"
-            type="com.grgroup.kapilhomes.newreferal.TitlesResponse" />
+            type="com.grgroup.hexabuild.newreferal.TitlesResponse" />
 
     </data>
 

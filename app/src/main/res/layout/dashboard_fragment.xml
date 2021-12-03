@@ -8,11 +8,11 @@
 
         <variable
             name="model"
-            type="com.grgroup.kapilhomes.dashboard.DashboardFragment" />
+            type="com.grgroup.hexabuild.dashboard.DashboardFragment" />
 
         <variable
             name="view"
-            type="com.grgroup.kapilhomes.dashboard.Dasboarddata" />
+            type="com.grgroup.hexabuild.dashboard.Dasboarddata" />
     </data>
 
 

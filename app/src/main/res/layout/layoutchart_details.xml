@@ -6,11 +6,11 @@
     <data>
         <variable
             name="model"
-            type="com.grgroup.kapilhomes.layoutchart.LayoutChartResponse" />
+            type="com.grgroup.hexabuild.layoutchart.LayoutChartResponse" />
 
         <variable
             name="fragment"
-            type="com.grgroup.kapilhomes.layoutchart.LayoutChartAdapter" />
+            type="com.grgroup.hexabuild.layoutchart.LayoutChartAdapter" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

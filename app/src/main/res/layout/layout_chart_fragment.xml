@@ -9,11 +9,11 @@
 
         <variable
             name="fragment"
-            type="com.grgroup.kapilhomes.layoutchart.LayoutChartFragment" />
+            type="com.grgroup.hexabuild.layoutchart.LayoutChartFragment" />
 
         <variable
             name="uimodel"
-            type="com.grgroup.kapilhomes.layoutchart.LayoutChartResponse" />
+            type="com.grgroup.hexabuild.layoutchart.LayoutChartResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
