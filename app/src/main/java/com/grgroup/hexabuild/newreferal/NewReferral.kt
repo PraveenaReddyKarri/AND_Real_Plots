@@ -1,6 +1,7 @@
 package com.grgroup.hexabuild.newreferal
 
 import android.content.Context
+import android.location.Location
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -8,11 +9,14 @@ import android.text.TextWatcher
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.NewReferralFragmentBinding
 import com.grgroup.hexabuild.utils.InternetConnection
@@ -24,11 +28,13 @@ import java.util.regex.Pattern
 import kotlin.collections.ArrayList
 
 
-class NewReferral : Fragment() ,TextWatcher{
+class NewReferral : Fragment() , LocationCallback,TextWatcher{
     private var binding: NewReferralFragmentBinding? = null
 
-
+    var switchMaterial: SwitchMaterial? = null
+    var referalLocation: ReferalLocation? = null
     private lateinit var viewModel: NewReferralViewModel
+    var fusedLocationProviderClient: FusedLocationProviderClient? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +50,8 @@ class NewReferral : Fragment() ,TextWatcher{
         (activity as AppCompatActivity).supportActionBar?.title = "New Referrals"
         binding?.fragment = this
         setHasOptionsMenu(true)
+        switchMaterial = view?.findViewById(R.id.location_switch)
+referalLocation= ReferalLocation(requireContext(), this)
 
         binding?.usernameEditText?.addTextChangedListener(this)
         binding?.surnameEditText?.addTextChangedListener(this)
@@ -66,7 +74,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
                 val user: ArrayList<String> = ArrayList()
 
-                for (i in 0..response.size-1) {
+                for (i in 0..response.size - 1) {
                     user.add(response.get(i).pTitleName)
                 }
 //                binding?.titlespinner?.
@@ -96,7 +104,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
 
                     if (binding?.panEditText?.text.toString().length > 0) {
-                            panRequestApi()
+                        panRequestApi()
                     } else {
                         sendAllDataToAPI()
 
@@ -185,6 +193,21 @@ class NewReferral : Fragment() ,TextWatcher{
             }
         })
 
+
+
+        switchMaterial?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+//                binding.progress.setVisibility(View.VISIBLE)
+                binding.confirmPayLocation.locationPermissions(activity)
+                confirmPayLocation.statusCheck(activity)
+//                radiolocation.setVisibility(View.VISIBLE)
+            } else {
+//                progress.setVisibility(View.GONE)
+//                showToast("Location is disabled")
+                radiolocation.setVisibility(View.GONE)
+            }
+        })
+
     }
 
     private fun sendAllDataToAPI() {
@@ -219,7 +242,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
 
         )
-        viewModel.panValidation("3",binding?.panEditText?.getText().toString())
+        viewModel.panValidation("3", binding?.panEditText?.getText().toString())
     }
 
 
@@ -344,5 +367,16 @@ class NewReferral : Fragment() ,TextWatcher{
             }
         }
     }
+
+    fun onNewLocationAvailable(location: Location) {
+//        progress.setVisibility(View.GONE)
+//        pay.setVisibility(View.VISIBLE)
+        lat = location.latitude
+        lng = location.longitude
+        if (lat != 0.0 && lng != 0.0) {
+            confirmPayLocation.removeLocation()
+        }
+    }
+
 
 }

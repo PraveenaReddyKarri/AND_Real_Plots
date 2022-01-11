@@ -191,6 +191,117 @@
 
                                 android:maxLength="10" />
                         </com.google.android.material.textfield.TextInputLayout>
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginStart="@dimen/_12sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+                            <!--                            <LinearLayout-->
+                            <!--                                android:layout_width="match_parent"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:weightSum="2"-->
+                            <!--                                android:orientation="horizontal">-->
+
+                            <!--                            <androidx.appcompat.widget.AppCompatTextView-->
+                            <!--                                android:textColor="@color/emi_pay_text"-->
+                            <!--                                android:fontFamily="@font/rubik_regular"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:textSize="@dimen/_13sdp"-->
+                            <!--                                android:layout_marginTop="@dimen/_5sdp"-->
+                            <!--                                android:text="Location "/>-->
+
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:layout_width="wrap_content"
+
+                                android:id="@+id/location_switch"
+                                android:layout_gravity="start"
+                                android:text="Location"
+                                android:fontFamily="@font/monda_regular"
+                                android:textColor="@color/blue"
+                                android:checked="false"
+                                android:layout_height="wrap_content"/>
+
+
+                            <!--                            </LinearLayout>-->
+
+                            <!--                            <LinearLayout-->
+                            <!--                                android:layout_width="match_parent"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:id="@+id/radioLinear"-->
+                            <!--                                android:orientation="horizontal">-->
+                            <!--                                -->
+
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:weightSum="3"
+                                android:visibility="gone"
+                                android:id="@+id/location_card"
+                                android:layout_height="wrap_content">
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:text="Home"
+                                    android:id="@+id/radio_home"
+                                    android:fontFamily="@font/rubik_regular"
+                                    android:textColor="@color/blue"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:background="@drawable/button_print_bg"
+                                    android:checked="true"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_5sdp" />
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:text="Office"
+                                    android:id="@+id/radio_office"
+                                    android:fontFamily="@font/rubik_regular"
+                                    android:textColor="@color/blue"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:background="@drawable/button_print_bg"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:checked="false"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_5sdp" />
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:text="Others"
+                                    android:id="@+id/radio_other"
+                                    android:fontFamily="@font/rubik_regular"
+                                    android:textColor="@color/blue"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:background="@drawable/button_print_bg"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:checked="false"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_5sdp" />
+
+
+                                <!--                                        <RadioButton-->
+                                <!--                                            android:layout_width="wrap_content"-->
+                                <!--                                            android:text="Swipe"-->
+                                <!--                                            android:fontFamily="@font/rubik_regular"-->
+                                <!--                                            android:layout_marginEnd="@dimen/_5sdp"-->
+                                <!--                                            android:textColor="@color/login__button_bg"-->
+                                <!--                                            android:background="@drawable/button_print_bg"-->
+                                <!--                                            android:textSize="@dimen/_12sdp"-->
+                                <!--                                            android:layout_weight="1"-->
+                                <!--                                            android:id="@+id/confirm_pay_swipe"-->
+                                <!--                                            android:layout_height="wrap_content"-->
+                                <!--                                            android:layout_marginRight="@dimen/_5sdp" />-->
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                         <Button
                             android:id="@+id/save"

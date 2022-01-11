@@ -85,38 +85,45 @@ class LoginFragment : Fragment() {
             val pref: SharedPref? = context?.let { SharedPref(it).getmSharedPrefInstance() }
 
             if (it.isSuccessful) {
-                val response: ArrayList<GetUserIdResponse> = it.body()!!
+                if (it.body() != null) {
+                    val response: ArrayList<GetUserIdResponse> = it.body()!!
 
-                if(response.size>0){
-                    pref?.setCreatedbyId(response.get(0).pUserID)
-                    pref?.setIntrocudedId(response.get(0).pContactID)
+                    if (response.size > 0) {
+                        pref?.setCreatedbyId(response.get(0).pUserID)
+                        pref?.setIntrocudedId(response.get(0).pContactID)
 
-                }
+                    }
 
-                navHostFragment =
-                    (activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
-                val inflater = navHostFragment.navController.navInflater
-                val graph = inflater.inflate(R.navigation.nav_graph)
-
-
-                graph.startDestination = R.id.dashboardFragment
+                    navHostFragment =
+                        (activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
+                    val inflater = navHostFragment.navController.navInflater
+                    val graph = inflater.inflate(R.navigation.nav_graph)
 
 
+                    graph.startDestination = R.id.dashboardFragment
 
-                navHostFragment.navController.graph = graph
 
 
-                if (response.toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    navHostFragment.navController.graph = graph
 
-                } else {
-                    Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_SHORT).show();
 
+                    if (response.toString().isEmpty()) {
+                        Toast.makeText(getActivity(), "Invalid Credentials", Toast.LENGTH_SHORT)
+                            .show();
+
+                    } else {
+                        Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_SHORT).show();
+
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Invalid User", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
 
             } else {
-                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT)
+                        .show();
 
             }
         })

@@ -6,18 +6,20 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.navigation.NavigationView
 import com.grgroup.hexabuild.dashboard.DashboardFragment
+import com.grgroup.hexabuild.databinding.ActivityMainBinding
+import com.grgroup.hexabuild.newreferal.ActivityResultHandler
 import com.grgroup.hexabuild.newreferal.NewReferral
 import com.grgroup.hexabuild.utils.SharedPref
 import com.grgroup.hexabuild.venturelist.VentureListFragment
-import com.google.android.material.navigation.NavigationView
-import com.grgroup.hexabuild.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     lateinit var navHostFragment: NavHostFragment
     val versionName = BuildConfig.VERSION_NAME
+    var activityResultHandler: ActivityResultHandler<Intent, ActivityResult>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(binding?.toolbar)
 //        supportActionBar!!.setDisplayShowTitleEnabled(false)
 //        toggle.isDrawerIndicatorEnabled = true
+        activityResultHandler = ActivityResultHandler.registerActivityForResult(this)
 
 
 //        val window: Window = MainActivity.getWindow()
