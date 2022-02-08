@@ -29,7 +29,7 @@ interface Connect {
 
 //LIVE
 
-    @GET("http://13.234.192.218:65446/api/HomesInventory/masters/PlotLayoutController/GetLandPurchasedLayoutdetailsby_landbankid")
+    @GET("/api/HomesInventory/masters/PlotLayoutController/GetLandPurchasedLayoutdetailsby_landbankid")
     suspend fun getVentureList(): Response<ArrayList<VentureListResponse>>
 
     @GET("/api/HomesInventory/masters/PlotLayoutController/GetLayoutplotsdetailsbylayoutid")
