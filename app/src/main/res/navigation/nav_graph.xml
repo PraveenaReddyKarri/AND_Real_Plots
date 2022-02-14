@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_newReferral"
             app:destination="@id/newReferral" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_siteVisiting"
+            app:destination="@id/siteVisiting" />
 
     </fragment>
     <fragment
@@ -57,4 +60,8 @@
         android:id="@+id/newReferral"
         android:name="com.grgroup.hexabuild.newreferal.NewReferral"
         android:label="NewReferral" />
+    <fragment
+        android:id="@+id/siteVisiting"
+        android:name="com.grgroup.hexabuild.sitevisit.SiteVisiting"
+        android:label="SiteVisiting" />
 </navigation>

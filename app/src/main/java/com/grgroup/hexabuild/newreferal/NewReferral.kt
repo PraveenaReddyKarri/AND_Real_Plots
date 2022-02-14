@@ -1,11 +1,15 @@
 package com.grgroup.hexabuild.newreferal
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -26,6 +30,7 @@ import kotlin.collections.ArrayList
 
 class NewReferral : Fragment() ,TextWatcher{
     private var binding: NewReferralFragmentBinding? = null
+    private val RESULT_LOAD_IMAGE = 1
 
 
     private lateinit var viewModel: NewReferralViewModel
@@ -49,6 +54,14 @@ class NewReferral : Fragment() ,TextWatcher{
         binding?.surnameEditText?.addTextChangedListener(this)
 
 
+
+        binding?.profilePic?.setOnClickListener { view ->
+            val i = Intent(
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            )
+//            registerForActivityResult(i, RESULT_LOAD_IMAGE)
+        }
         return binding?.root
     }
 
@@ -66,7 +79,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
                 val user: ArrayList<String> = ArrayList()
 
-                for (i in 0..response.size-1) {
+                for (i in 0..response.size - 1) {
                     user.add(response.get(i).pTitleName)
                 }
 //                binding?.titlespinner?.
@@ -96,7 +109,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
 
                     if (binding?.panEditText?.text.toString().length > 0) {
-                            panRequestApi()
+                        panRequestApi()
                     } else {
                         sendAllDataToAPI()
 
@@ -219,7 +232,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
 
         )
-        viewModel.panValidation("3",binding?.panEditText?.getText().toString())
+        viewModel.panValidation("3", binding?.panEditText?.getText().toString())
     }
 
 

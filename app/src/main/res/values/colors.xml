@@ -25,5 +25,7 @@
     <color name="app_color">#9F8359</color>
     <color name="login_bg_light">#E45656</color>
 
-
+    <color name="blue_200">#006ABB</color>
+    <color name="blue_500">#035A9C</color>
+    <color name="blue_700">#02487E</color>
 </resources>

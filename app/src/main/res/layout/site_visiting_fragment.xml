@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.grgroup.hexabuild.sitevisit.SiteVisiting" />
+
+<!--        <variable-->
+<!--            name="model"-->
+<!--            type="com.grgroup.hexabuild.newreferal.NewReferralRequest" />-->
+
+<!--        <variable-->
+<!--            name="model2"-->
+<!--            type="com.grgroup.hexabuild.newreferal.TitlesResponse" />-->
+
+    </data>
+<LinearLayout
+  android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".sitevisit.SiteVisiting">
+
+    <Button
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:backgroundTint="@color/button"
+        android:text="Share Location"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/lat"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        android:id="@+id/lang"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/captureImage"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+    <Button
+        android:id="@+id/buttonLoadPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Picture"
+        android:layout_marginTop="@dimen/_20sdp"
+
+        android:layout_gravity="center">
+
+    </Button>
+
+</LinearLayout>
+
+</layout>
