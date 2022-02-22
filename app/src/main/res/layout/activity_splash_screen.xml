@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bluelight">
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -10,11 +11,10 @@
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_150sdp"
         android:layout_centerInParent="true"
-
-
-        android:background="@drawable/client_croplogo"
+android:src="@drawable/grlogonew"
 
         />
+<!--    android:background="@drawable/client_croplogo"-->
 
     <androidx.appcompat.widget.AppCompatImageView
 

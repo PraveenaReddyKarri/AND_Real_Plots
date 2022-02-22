@@ -7,6 +7,8 @@ import com.grgroup.hexabuild.newreferal.MobileValidateRequest
 import com.grgroup.hexabuild.newreferal.NewReferralRequest
 import com.grgroup.hexabuild.newreferal.NewReferralResponse
 import com.grgroup.hexabuild.newreferal.TitlesResponse
+import com.grgroup.hexabuild.sitevisit.SiteVisitRequest
+import com.grgroup.hexabuild.sitevisit.SiteVisitResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -53,4 +55,8 @@ interface ConnectTwo {
  @GET("api/Settings/getContacttitles")
     suspend fun getTitles(): Response<ArrayList<TitlesResponse>>
 //LIVE
+
+    @POST("/api/loans/masters/contactmasterNew/Save")
+    suspend fun saveuserData(@Body siteVisitRequest: SiteVisitRequest): Response<ArrayList<SiteVisitResponse>>
+
 }

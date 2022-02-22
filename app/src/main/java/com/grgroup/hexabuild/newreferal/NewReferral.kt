@@ -1,27 +1,42 @@
 package com.grgroup.hexabuild.newreferal
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.NewReferralFragmentBinding
+import com.grgroup.hexabuild.sitevisit.ImagePickerActivity
 import com.grgroup.hexabuild.utils.InternetConnection
 import com.grgroup.hexabuild.utils.SharedPref
 import com.grgroup.hexabuild.utils.Utils
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -32,6 +47,8 @@ class NewReferral : Fragment() ,TextWatcher{
     private var binding: NewReferralFragmentBinding? = null
     private val RESULT_LOAD_IMAGE = 1
 
+    val REQUEST_IMAGE = 100
+    var imageBase64String: String? = null
 
     private lateinit var viewModel: NewReferralViewModel
 
@@ -55,12 +72,14 @@ class NewReferral : Fragment() ,TextWatcher{
 
 
 
-        binding?.profilePic?.setOnClickListener { view ->
-            val i = Intent(
-                Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            )
+        binding?.profiePic?.setOnClickListener { view ->
+//            val i = Intent(
+//                Intent.ACTION_PICK,
+//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+//            )
 //            registerForActivityResult(i, RESULT_LOAD_IMAGE)
+
+            onProfileImageClick()
         }
         return binding?.root
     }
@@ -176,6 +195,9 @@ class NewReferral : Fragment() ,TextWatcher{
 
                 if (response.get(0).pstatus.equals("TRUE")) {
                     Toast.makeText(getActivity(), "Saved Successfully", Toast.LENGTH_SHORT).show()
+
+
+
                     binding?.mobileEditText?.getText()?.clear()
                     binding?.surnameEditText?.getText()?.clear()
                     binding?.usernameEditText?.getText()?.clear()
@@ -206,21 +228,23 @@ class NewReferral : Fragment() ,TextWatcher{
 
         val request = NewReferralRequest(
 
-            pName = binding?.usernameEditText?.getText().toString(),
+            pName = binding?.usernameEditText?.text.toString(),
 
             pTitleName = binding?.titlespinner?.selectedItem.toString(),
 
-            pSurName = binding?.surnameEditText?.getText()
+            pSurName = binding?.surnameEditText?.text
                 .toString(),
-            pBusinessEntitycontactNo = binding?.mobileEditText?.getText()
+            pBusinessEntitycontactNo = binding?.mobileEditText?.text
                 .toString(),
             pCreatedby = createdid,
-            pContactName = binding?.usernameEditText?.getText()
+            pContactName = binding?.usernameEditText?.text
                 .toString()
                     + " " +
-                    binding?.surnameEditText?.getText().toString(),
-            pPanNumber = binding?.panEditText?.getText().toString().toUpperCase(Locale.ROOT),
-            pintroducedid = introducedid
+                    binding?.surnameEditText?.text.toString(),
+            pPanNumber = binding?.panEditText?.text.toString().toUpperCase(Locale.ROOT),
+            pintroducedid = introducedid,
+            file_name= imageBase64String.toString()
+
         )
         viewModel.saveData(request)
     }
@@ -228,11 +252,11 @@ class NewReferral : Fragment() ,TextWatcher{
     private fun panRequestApi() {
         val request1 = PanValidateRequest(
             "3",
-            binding?.panEditText?.getText().toString()
+            binding?.panEditText?.text.toString()
 
 
         )
-        viewModel.panValidation("3", binding?.panEditText?.getText().toString())
+        viewModel.panValidation("3", binding?.panEditText?.text.toString())
     }
 
 
@@ -357,5 +381,152 @@ class NewReferral : Fragment() ,TextWatcher{
             }
         }
     }
+
+
+    fun onProfileImageClick() {
+        Dexter.withActivity(activity)
+            .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                    if (report.areAllPermissionsGranted()) {
+                        showImagePickerOptions()
+                    }
+                    if (report.isAnyPermissionPermanentlyDenied) {
+                        showSettingsDialog()
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: List<PermissionRequest?>?,
+                    token: PermissionToken
+                ) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
+    }
+
+    private fun showImagePickerOptions() {
+        ImagePickerActivity.showbothImagePickerOptions(requireContext(), object :
+            ImagePickerActivity.PickerOptionListener
+        {
+            override fun onTakeCameraSelected() {
+                launchCameraIntent()
+            }
+
+            override fun onChooseGallerySelected() {
+                launchGalleryIntent()
+            }
+        })
+    }
+
+
+    private fun launchCameraIntent() {
+        val intent = Intent(activity, ImagePickerActivity::class.java)
+        intent.putExtra(
+            ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION,
+            ImagePickerActivity.REQUEST_IMAGE_CAPTURE
+        )
+
+        // setting aspect ratio
+        intent.putExtra(ImagePickerActivity.INTENT_LOCK_ASPECT_RATIO, true)
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_X, 1) // 16x9, 1x1, 3:4, 3:2
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_Y, 1)
+
+        // setting maximum bitmap width and height
+        intent.putExtra(ImagePickerActivity.INTENT_SET_BITMAP_MAX_WIDTH_HEIGHT, true)
+        intent.putExtra(ImagePickerActivity.INTENT_BITMAP_MAX_WIDTH, 1000)
+        intent.putExtra(ImagePickerActivity.INTENT_BITMAP_MAX_HEIGHT, 1000)
+        startActivityForResult(intent, REQUEST_IMAGE)
+    }
+    private fun launchGalleryIntent() {
+        val intent = Intent(activity, ImagePickerActivity::class.java)
+        intent.putExtra(
+            ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION,
+            ImagePickerActivity.REQUEST_GALLERY_IMAGE
+        )
+
+        // setting aspect ratio
+        intent.putExtra(ImagePickerActivity.INTENT_LOCK_ASPECT_RATIO, true)
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_X, 1) // 16x9, 1x1, 3:4, 3:2
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_Y, 1)
+        startActivityForResult(intent, REQUEST_IMAGE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode === REQUEST_IMAGE) {
+            if (resultCode === Activity.RESULT_OK) {
+                val uri: Uri? = data!!.getParcelableExtra("path")
+                try {
+                    // You can update this bitmap to your server
+                    val bitmap = MediaStore.Images.Media.getBitmap(
+                        requireContext().contentResolver,
+                        uri
+                    )
+
+                    // loading profile image from local cache
+                    binding!!.profiePic.setImageBitmap(bitmap)
+                   imageBase64String = convert(bitmap)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }    }
+
+//   public final fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent) {
+//        if (requestCode == REQUEST_IMAGE) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                val uri: Uri = data.getParcelableExtra("path")
+//                try {
+//                    // You can update this bitmap to your server
+//                    val bitmap = MediaStore.Images.Media.getBitmap(context!!.contentResolver, uri)
+//
+//                    // loading profile image from local cache
+//                    binding!!.captureImage.setImageBitmap(bitmap)
+//                    mViewModel.imageBase64String = convert(bitmap)
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            }
+//        }
+//    }
+
+    fun convert(bitmap: Bitmap): String? {
+
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream)
+        val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
+        return Base64.encodeToString(byteArray, Base64.DEFAULT)
+//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.
+        //        JPEG, 70, outputStream);
+//        return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
+    }
+
+
+    private fun showSettingsDialog() {
+
+        val builder = AlertDialog.Builder(
+            requireContext()
+        )
+        builder.setTitle(getString(R.string.dialog_permission_title))
+        builder.setMessage(getString(R.string.dialog_permission_message))
+        builder.setPositiveButton(getString(R.string.go_to_settings)) { dialog, which ->
+            dialog.cancel()
+            openSettings()
+        }
+        builder.setNegativeButton(getString(android.R.string.cancel)) { dialog, which -> dialog.cancel() }
+        builder.show()
+    }
+
+    // navigating user to app settings
+    private fun openSettings() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri: Uri = Uri.fromParts("package", requireContext().packageName, null)
+        intent.data = uri
+        startActivityForResult(intent, 101)
+    }
+
+
+
 
 }

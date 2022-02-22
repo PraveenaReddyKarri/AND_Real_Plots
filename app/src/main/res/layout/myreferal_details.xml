@@ -1,0 +1,16 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+<!--        <variable-->
+<!--            name="model"-->
+<!--            type="com.grgroup.hexabuild.myreferals.LayoutChartResponse" />-->
+
+        <variable
+            name="fragment"
+            type="com.grgroup.hexabuild.myreferals.MyreferalsAdapter" />
+    </data><androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

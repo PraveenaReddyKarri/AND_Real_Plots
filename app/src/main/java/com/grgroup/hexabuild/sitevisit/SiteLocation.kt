@@ -148,7 +148,7 @@ class SiteLocation(private val context: Context, var callback: LocationCallback)
 
 
     override fun onLocationChanged(location: Location) {
-//        showToast("Current Location: " + location.latitude + ", " + location.longitude + ", " + location.time)
+        showToast("Current Location: " + location.latitude + ", " + location.longitude + ", " + location.time)
         callback.onNewLocationAvailable(location)
     }
 

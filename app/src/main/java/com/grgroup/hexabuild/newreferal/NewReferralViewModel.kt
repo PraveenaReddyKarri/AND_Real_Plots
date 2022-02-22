@@ -14,7 +14,7 @@ class NewReferralViewModel : ViewModel() {
     val data: MutableLiveData<Response<String>> = MutableLiveData()
     val pan: MutableLiveData<Response<String>> = MutableLiveData()
     val titles: MutableLiveData<Response<ArrayList<TitlesResponse>>> = MutableLiveData()
-
+    var imageBase64String: String? = null
 
     fun saveData(newReferralRequest: NewReferralRequest) {
         viewModelScope.launch{
@@ -46,10 +46,10 @@ class NewReferralViewModel : ViewModel() {
     }
 
 
-    fun panValidation(Plotno: String,LayoutId: String) {
+    fun panValidation(Plotno: String, LayoutId: String) {
         viewModelScope.launch {
             try {
-                pan.postValue((RetrofitInstanceTwo.api.panCheck(Plotno,LayoutId)))
+                pan.postValue((RetrofitInstanceTwo.api.panCheck(Plotno, LayoutId)))
             } catch (exception: HttpException) {
 
             }

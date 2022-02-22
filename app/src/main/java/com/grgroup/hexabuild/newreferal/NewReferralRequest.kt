@@ -13,7 +13,8 @@ data class NewReferralRequest (
     @SerializedName("pStatusname") var pStatusname : String="Active",
     @SerializedName("pContactName") var pContactName : String,
     @SerializedName("pPanNumber") var pPanNumber : String,
-@SerializedName("pintroducedid") var pintroducedid : String
+@SerializedName("latitude") var pintroducedid : String,
+@SerializedName("file_name") var file_name : String
 
 
 

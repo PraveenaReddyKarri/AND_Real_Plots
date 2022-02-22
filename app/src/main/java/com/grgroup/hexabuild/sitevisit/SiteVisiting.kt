@@ -13,6 +13,8 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -22,14 +24,19 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.SiteVisitingFragmentBinding
+import com.grgroup.hexabuild.newreferal.NewReferralRequest
+import com.grgroup.hexabuild.newreferal.NewReferralViewModel
+import com.grgroup.hexabuild.newreferal.TitlesResponse
+import com.grgroup.hexabuild.utils.SharedPref
+import com.grgroup.hexabuild.utils.Utils
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import okhttp3.OkHttpClient
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.util.*
 
 
 class SiteVisiting : Fragment() ,LocationCallback{
@@ -42,6 +49,7 @@ class SiteVisiting : Fragment() ,LocationCallback{
     var siteLocation: SiteLocation? = null
     var lat:Double = 0.0
     var lng:Double = 0.0
+    var imageBase64String: String? = null
 
 
 //    var request: Locationinput? = null
@@ -67,6 +75,7 @@ class SiteVisiting : Fragment() ,LocationCallback{
         binding?.fragment = this
         setHasOptionsMenu(true)
 
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
 
@@ -78,14 +87,10 @@ class SiteVisiting : Fragment() ,LocationCallback{
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SiteVisitingViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(SiteVisitingViewModel::class.java)
 
         binding?.location?.setOnClickListener {
             siteLocation?.locationPermissions(requireActivity())
@@ -93,13 +98,70 @@ class SiteVisiting : Fragment() ,LocationCallback{
 
         }
 
-        binding?.buttonLoadPicture?.setOnClickListener {
+        binding?.captureImage?.setOnClickListener {
 
             onProfileImageClick()
         }
 
+        binding?.Save?.setOnClickListener {
+
+            sendAllDataToAPI()
+        }
+
+
+
+        viewModel.response.observe(viewLifecycleOwner, {
+            Utils.closeProgressBar()
+
+
+
+            if (it.isSuccessful) {
+                val response: String = it.body().toString()
+
+                if (response != null) {
+                    sendAllDataToAPI()
+
+//                    Toast.makeText(getActivity(), "Mobile number updated", Toast.LENGTH_SHORT).show()
+
+                } else {
+
+                    Toast.makeText(
+                        getActivity(),
+                        "",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+
+
+            } else {
+                Toast.makeText(getActivity(), "Unauthorized User", Toast.LENGTH_SHORT).show();
+
+            }
+        })
+
 
     }
+
+    private fun sendAllDataToAPI() {
+//        val createdid: String = SharedPref(requireContext()).getCreatedbyId().toString()
+//        val introducedid: String = SharedPref(requireContext()).getIntrocudedId().toString()
+
+        val request = SiteVisitRequest(
+
+            latitude = lat.toString(),
+
+            longitude =lng.toString(),
+
+
+            file_name= imageBase64String.toString()
+
+        )
+        viewModel.saveData(request)
+    }
+
+
+
 
     fun onProfileImageClick() {
         Dexter.withActivity(activity)
@@ -110,7 +172,7 @@ class SiteVisiting : Fragment() ,LocationCallback{
                         showImagePickerOptions()
                     }
                     if (report.isAnyPermissionPermanentlyDenied) {
-//                        showSettingsDialog()
+                        showSettingsDialog()
                     }
                 }
 
@@ -182,7 +244,7 @@ class SiteVisiting : Fragment() ,LocationCallback{
 
                     // loading profile image from local cache
                     binding!!.captureImage.setImageBitmap(bitmap)
-//                    mViewModel.imageBase64String = convert(bitmap)
+                    imageBase64String = convert(bitmap)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -222,7 +284,9 @@ class SiteVisiting : Fragment() ,LocationCallback{
 
     private fun showSettingsDialog() {
 
-        val builder: AlertDialog.Builder = OkHttpClient.Builder(context)
+        val builder = AlertDialog.Builder(
+            requireContext()
+        )
         builder.setTitle(getString(R.string.dialog_permission_title))
         builder.setMessage(getString(R.string.dialog_permission_message))
         builder.setPositiveButton(getString(R.string.go_to_settings)) { dialog, which ->

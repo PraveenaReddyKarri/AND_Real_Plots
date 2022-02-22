@@ -21,14 +21,14 @@
 
     </data>
 
-    <!--    <RelativeLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        >-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -193,11 +193,14 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="@dimen/_50sdp"
-                            android:id="@+id/profile_pic"
-                            android:layout_marginStart="@dimen/_12sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_height="@dimen/_50sdp"/>
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="@dimen/_150sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:id="@+id/profie_pic"
+
+                            app:srcCompat="@drawable/ic_baseline_perm_identity_24" />
 
 
                         <Button
@@ -214,6 +217,25 @@
                             android:textColor="@color/white" />
 
 
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="Leader"
+
+                          android:textSize="@dimen/_15sdp"
+                          android:layout_marginStart="@dimen/_12sdp"
+                          android:layout_marginTop="@dimen/_18sdp"
+                          android:layout_marginEnd="@dimen/_12sdp"/>
+
+                          <androidx.recyclerview.widget.RecyclerView
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:textSize="@dimen/_15sdp"
+                              android:layout_marginStart="@dimen/_12sdp"
+                              android:layout_marginTop="@dimen/_18sdp"
+                              android:layout_marginEnd="@dimen/_12sdp"
+                              />
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -222,7 +244,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    </ScrollView>-->
+    </ScrollView>
 
-    <!--    </RelativeLayout>-->
+        </RelativeLayout>
 </layout>

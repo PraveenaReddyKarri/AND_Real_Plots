@@ -53,9 +53,10 @@
             android:layout_gravity="start"
             android:layout_marginStart="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            android:src="@drawable/kapil_homes_client"
             android:textSize="@dimen/_12sdp"
+            android:src="@drawable/grlogonew"
             />
+<!--        android:src="@drawable/kapil_homes_client"-->
 
 
     </LinearLayout>

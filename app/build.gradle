@@ -68,6 +68,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.github.yalantis:ucrop:2.2.6'
 
+    implementation 'de.blox.treeview:treeview:0.1.0'
+
 
 
 

@@ -213,7 +213,8 @@ class ImagePickerActivity : AppCompatActivity() {
         const val REQUEST_IMAGE_CAPTURE = 0
         const val REQUEST_GALLERY_IMAGE = 1
         var fileName: String? = null
-        fun showImagePickerOptions(context: Context, listener: PickerOptionListener) {
+
+        fun showbothImagePickerOptions(context: Context, listener: PickerOptionListener) {
             // setup the alert builder
             val builder = AlertDialog.Builder(context)
             builder.setTitle(context.getString(R.string.lbl_set_profile_photo))
@@ -222,6 +223,30 @@ class ImagePickerActivity : AppCompatActivity() {
             val animals = arrayOf(
                 context.getString(R.string.lbl_take_camera_picture),
                 context.getString(R.string.lbl_choose_from_gallery)
+            )
+            builder.setItems(
+                animals
+            ) { dialog: DialogInterface?, which: Int ->
+                when (which) {
+                    0 -> listener.onTakeCameraSelected()
+                    1 -> listener.onChooseGallerySelected()
+                }
+            }
+
+            // create and show the alert dialog
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+        fun showImagePickerOptions(context: Context, listener: PickerOptionListener) {
+            // setup the alert builder
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle(context.getString(R.string.lbl_set_profile_photo))
+
+            // add a list
+            val animals = arrayOf(
+                context.getString(R.string.lbl_take_camera_picture),
+//                context.getString(R.string.lbl_choose_from_gallery)
             )
             builder.setItems(
                 animals
