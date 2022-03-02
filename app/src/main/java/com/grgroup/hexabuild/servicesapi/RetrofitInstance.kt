@@ -46,8 +46,9 @@ object RetrofitInstance {
 
 
         Retrofit.Builder()
-//            .baseUrl("http://13.234.192.218:65493")// testing
-            .baseUrl("http://13.234.192.218:65446")
+            .baseUrl("http://13.234.192.218:65493")// testing
+//            .baseUrl("http://13.234.192.218:65446")//live
+//            .baseUrl("http://13.234.192.218:65486")//image
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

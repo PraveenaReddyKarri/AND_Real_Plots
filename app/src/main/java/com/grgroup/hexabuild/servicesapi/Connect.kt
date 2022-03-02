@@ -3,9 +3,10 @@ package com.grgroup.hexabuild.servicesapi
 import com.grgroup.hexabuild.layoutchart.LayoutChartResponse
 import com.grgroup.hexabuild.plotdetails.PlotDetailsResponse
 import com.grgroup.hexabuild.venturelist.VentureListResponse
+import okhttp3.MultipartBody
+import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface Connect {
 
@@ -39,6 +40,9 @@ interface Connect {
 
     @GET("/api/Plots/Masters/LayoutEntry/GetPlotnodetailsFromBranch")
     suspend fun getplotDetails(@Query("Plotno")Plotno: String,@Query("LayoutId")LayoutId: String): Response<ArrayList<PlotDetailsResponse>>
+
+
+
 
 //LIVE
 

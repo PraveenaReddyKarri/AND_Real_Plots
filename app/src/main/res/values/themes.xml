@@ -57,4 +57,37 @@
         <item name="android:fontFamily">@font/raleway_bold</item>
     </style>
 
+    <style name="Text_input_Theme">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@android:color/darker_gray</item>
+        <item name="colorControlHighlight">@android:color/darker_gray</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="Text_input_EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAlignment" tools:ignore="NewApi">viewStart</item>
+        <item name="android:elegantTextHeight" tools:ignore="NewApi">true</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:theme">@style/Text_input_Theme</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:maxLength">50</item>
+        <item name="android:longClickable">false</item>
+    </style>
+    <style name="Text_input_Layout">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+
+    </style>
+
+
 </resources>

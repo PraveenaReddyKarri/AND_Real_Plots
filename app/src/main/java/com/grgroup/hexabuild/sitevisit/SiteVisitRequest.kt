@@ -14,8 +14,15 @@ data class SiteVisitRequest (
 //    @SerializedName("pContactName") var pContactName : String,
     @SerializedName("latitude") var latitude : String,
 @SerializedName("longitude") var longitude : String,
-@SerializedName("file_name") var file_name : String
+@SerializedName("imagepath") var imagepath : String,
+@SerializedName("customername") var customername : String,
+@SerializedName("contactno") var contactno : String,
+@SerializedName("address") var address : String,
+@SerializedName("transdate") var transdate : String,
+@SerializedName("statusid") var statusid : String="true",
+@SerializedName("createdby") var createdby : String,
 
 
 
 )
+

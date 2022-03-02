@@ -9,11 +9,11 @@ import com.grgroup.hexabuild.newreferal.NewReferralResponse
 import com.grgroup.hexabuild.newreferal.TitlesResponse
 import com.grgroup.hexabuild.sitevisit.SiteVisitRequest
 import com.grgroup.hexabuild.sitevisit.SiteVisitResponse
+import okhttp3.MultipartBody
+import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
+
 
 interface ConnectTwo {
 
@@ -37,7 +37,7 @@ interface ConnectTwo {
     suspend fun userLogin(@Body loginRequest: LoginRequest): Response<LoginResponse>
 
     @GET("/api/Settings/Users/UserAccess/GetUserIDRefID")
-    suspend fun getUsers(@Query("username")username: String): Response<ArrayList<GetUserIdResponse>>
+    suspend fun getUsers(@Query("username") username: String): Response<ArrayList<GetUserIdResponse>>
 
 
     @POST("/api/loans/masters/contactmasterNew/Saveappcontact")
@@ -48,15 +48,27 @@ interface ConnectTwo {
 
 
    @GET("/api/loans/masters/contactmasterNew/CheckDocumentExist")
-    suspend fun panCheck(@Query("DocumentId")DocumentId: String,@Query("ReferenceNo")ReferenceNo: String): Response<String>
+    suspend fun panCheck(
+       @Query("DocumentId") DocumentId: String,
+       @Query("ReferenceNo") ReferenceNo: String
+   ): Response<String>
+
+//    @GET("/api/loans/masters/contactmasterNew/imagefile")
+//    suspend fun image(): Response<String>
 
 
 
- @GET("api/Settings/getContacttitles")
+    @GET("api/Settings/getContacttitles")
     suspend fun getTitles(): Response<ArrayList<TitlesResponse>>
 //LIVE
 
-    @POST("/api/loans/masters/contactmasterNew/Save")
-    suspend fun saveuserData(@Body siteVisitRequest: SiteVisitRequest): Response<ArrayList<SiteVisitResponse>>
+    @POST("api/loans/masters/contactmasterNew/SaveSiteTracking_Details")
+    suspend fun saveuserData(@Body siteVisitRequest: SiteVisitRequest): Response<String>
+
+
+    @Multipart
+    @POST("/api/loans/masters/contact/MultiFileUpload")
+    suspend fun imageUploading(@Part file: MultipartBody.Part, ): Response<ArrayList<String>>
+
 
 }

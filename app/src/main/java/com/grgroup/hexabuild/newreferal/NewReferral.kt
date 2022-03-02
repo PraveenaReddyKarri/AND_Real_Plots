@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.grgroup.hexabuild.FilePath.getPath1
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.NewReferralFragmentBinding
 import com.grgroup.hexabuild.sitevisit.ImagePickerActivity
@@ -35,7 +38,11 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.IOException
 import java.util.*
 import java.util.regex.Matcher
@@ -49,6 +56,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
     val REQUEST_IMAGE = 100
     var imageBase64String: String? = null
+    var filename: String? = null
 
     private lateinit var viewModel: NewReferralViewModel
 
@@ -163,13 +171,13 @@ class NewReferral : Fragment() ,TextWatcher{
                 if (response.equals("0")) {
                     sendAllDataToAPI()
 
-//                    Toast.makeText(getActivity(), "Mobile number updated", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(getActivity(), "Pan updated", Toast.LENGTH_SHORT).show()
 
                 } else {
 
                     Toast.makeText(
                         getActivity(),
-                        "Pan number already exists",
+                        "Something went wrong",
                         Toast.LENGTH_SHORT
                     ).show()
 
@@ -183,6 +191,33 @@ class NewReferral : Fragment() ,TextWatcher{
         })
 
 
+        viewModel.image.observe(viewLifecycleOwner, {
+            Utils.closeProgressBar()
+            if (it.isSuccessful) {
+                val response: ArrayList<String> = it.body()!!
+                filename=response[1]
+
+//                if (response.equals("0")) {
+//                    sendAllDataToAPI()
+
+                    Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show()
+
+                } else {
+
+                    Toast.makeText(
+                        getActivity(),
+                        "ERROR",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+
+
+//            } else {
+//                Toast.makeText(getActivity(), "Unauthorized User", Toast.LENGTH_SHORT).show();
+//
+//            }
+        })
 
 
 
@@ -243,7 +278,7 @@ class NewReferral : Fragment() ,TextWatcher{
                     binding?.surnameEditText?.text.toString(),
             pPanNumber = binding?.panEditText?.text.toString().toUpperCase(Locale.ROOT),
             pintroducedid = introducedid,
-            file_name= imageBase64String.toString()
+           pPhoto  =filename.toString()
 
         )
         viewModel.saveData(request)
@@ -407,8 +442,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
     private fun showImagePickerOptions() {
         ImagePickerActivity.showbothImagePickerOptions(requireContext(), object :
-            ImagePickerActivity.PickerOptionListener
-        {
+            ImagePickerActivity.PickerOptionListener {
             override fun onTakeCameraSelected() {
                 launchCameraIntent()
             }
@@ -457,20 +491,51 @@ class NewReferral : Fragment() ,TextWatcher{
             if (resultCode === Activity.RESULT_OK) {
                 val uri: Uri? = data!!.getParcelableExtra("path")
                 try {
-                    // You can update this bitmap to your server
-                    val bitmap = MediaStore.Images.Media.getBitmap(
-                        requireContext().contentResolver,
-                        uri
-                    )
 
-                    // loading profile image from local cache
-                    binding!!.profiePic.setImageBitmap(bitmap)
-                   imageBase64String = convert(bitmap)
+                //    val uri = data.data
+                    val selectedFilePath = getPath1(requireContext(), uri!!)
+                    val file = File(selectedFilePath)
+
+                    binding?.profiePic?.setImageURI(uri)
+//
+                    val filePart: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.getName(),
+                        RequestBody.create("image/*".toMediaTypeOrNull(), file));
+//
+//                    Log.e("hell",file.toString())
+                    viewModel.imageUpload(filePart)
+                    // You can update this bitmap to your server
+//                    val bitmap = MediaStore.Images.Media.getBitmap(
+//                        requireContext().contentResolver,
+//                        uri
+//                    )
+//
+//                    // loading profile image from local cache
+//                    binding!!.profiePic.setImageBitmap(bitmap)
+//                   imageBase64String = convert(bitmap)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
             }
         }    }
+
+
+    fun getRealPathFromURI(context: Context?, contentUri: Uri?): String? {
+        Log.d("imin", "onClick: in image conversion")
+        var cursor: Cursor? = null
+        return try {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            cursor = context?.contentResolver?.query(contentUri!!, proj, null, null, null)
+            val column_index: Int = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            Log.d("imin", "onClick: in image conversion try")
+            cursor.getString(column_index)
+        } finally {
+            Log.d("imin", "onClick: in image conversion finally")
+            if (cursor != null) {
+                cursor.close()
+            }
+        }
+    }
 
 //   public final fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent) {
 //        if (requestCode == REQUEST_IMAGE) {
