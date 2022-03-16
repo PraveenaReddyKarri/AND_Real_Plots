@@ -7,9 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.MyreferalDetailsBinding
+import com.grgroup.hexabuild.venturelist.VentureListResponse
 
-class MyreferalsAdapter(private val context: Context?) : RecyclerView.Adapter<MyreferalsAdapter.ViewHolder>() {
-
+class MyreferalsAdapter(private var myReferralResponse: ArrayList<MyReferralResponse>?, private val context: Context?) : RecyclerView.Adapter<MyreferalsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,10 +26,13 @@ class MyreferalsAdapter(private val context: Context?) : RecyclerView.Adapter<My
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val entity: MyReferralResponse = myReferralResponse!![position]
+        holder.itemBinding?.setModel(entity)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return myReferralResponse!!.size
     }
 
     class ViewHolder(itemBinding: MyreferalDetailsBinding) :

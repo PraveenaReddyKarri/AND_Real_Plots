@@ -71,6 +71,9 @@ dependencies {
 
     implementation 'de.blox.treeview:treeview:0.1.0'
 
+    implementation 'com.github.bmelnychuk:atv:1.2.+'
+
+    implementation 'com.github.johnkil.print:print:1.2.2'
 
 
 

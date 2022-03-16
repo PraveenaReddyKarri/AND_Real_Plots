@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_siteVisiting"
             app:destination="@id/siteVisiting" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_myreferalsFragment"
+            app:destination="@id/myreferalsFragment" />
 
     </fragment>
     <fragment
@@ -64,4 +67,8 @@
         android:id="@+id/siteVisiting"
         android:name="com.grgroup.hexabuild.sitevisit.SiteVisiting"
         android:label="SiteVisiting" />
+    <fragment
+        android:id="@+id/myreferalsFragment"
+        android:name="com.grgroup.hexabuild.myreferals.MyreferalsFragment"
+        android:label="MyreferalsFragment" />
 </navigation>

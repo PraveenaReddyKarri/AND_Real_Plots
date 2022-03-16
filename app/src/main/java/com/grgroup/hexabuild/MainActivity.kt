@@ -17,8 +17,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import com.grgroup.hexabuild.dashboard.DashboardFragment
 import com.grgroup.hexabuild.databinding.ActivityMainBinding
+import com.grgroup.hexabuild.myreferals.MyreferalsFragment
 import com.grgroup.hexabuild.newreferal.NewReferral
 import com.grgroup.hexabuild.sitevisit.ActivityResultHandler
+import com.grgroup.hexabuild.sitevisit.SiteVisiting
 import com.grgroup.hexabuild.utils.SharedPref
 import com.grgroup.hexabuild.venturelist.VentureListFragment
 
@@ -72,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         hView!!.findViewById<View>(R.id.nav_logout).setOnClickListener(this)
         hView!!.findViewById<View>(R.id.newrefferels).setOnClickListener(this)
         hView!!.findViewById<View>(R.id.sitevisit).setOnClickListener(this)
+        hView!!.findViewById<View>(R.id.myreferral).setOnClickListener(this)
 
 
         navHostFragment =
@@ -216,8 +219,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 navHostFragment.let { navFragment ->
                     navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
 
-                        if (fragment !is NewReferral)
+                        if (fragment !is SiteVisiting)
                             navHostFragment.navController.navigate(R.id.siteVisiting)
+
+                    }
+                }
+            }
+            R.id.myreferral -> {
+                navHostFragment.let { navFragment ->
+                    navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
+
+                        if (fragment !is MyreferalsFragment)
+                            navHostFragment.navController.navigate(R.id.myreferalsFragment)
 
                     }
                 }

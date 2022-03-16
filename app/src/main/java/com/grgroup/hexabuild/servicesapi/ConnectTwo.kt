@@ -3,6 +3,7 @@ package com.grgroup.hexabuild.servicesapi
 import com.grgroup.hexabuild.login.GetUserIdResponse
 import com.grgroup.hexabuild.login.LoginRequest
 import com.grgroup.hexabuild.login.LoginResponse
+import com.grgroup.hexabuild.myreferals.MyReferralResponse
 import com.grgroup.hexabuild.newreferal.MobileValidateRequest
 import com.grgroup.hexabuild.newreferal.NewReferralRequest
 import com.grgroup.hexabuild.newreferal.NewReferralResponse
@@ -68,7 +69,9 @@ interface ConnectTwo {
 
     @Multipart
     @POST("/api/loans/masters/contact/MultiFileUpload")
-    suspend fun imageUploading(@Part file: MultipartBody.Part, ): Response<ArrayList<String>>
+    suspend fun imageUploading(@Part file: MultipartBody.Part ): Response<ArrayList<String>>
 
-
+    @GET("/api/Plots/Transactions/PlotBooking/GetCadreDetailsWithReferralId")
+    suspend fun getCaderDetails(@Query("Rid") Rid: String): Response<ArrayList<MyReferralResponse>>
+//name, mobile no, desig
 }
