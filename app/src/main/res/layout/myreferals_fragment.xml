@@ -24,6 +24,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -33,12 +34,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_12sdp"
-                    android:layout_marginTop="@dimen/_70sdp"
-                    android:fontFamily="@font/raleway_bold"
-                    android:text="Team Details"
 
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_20sdp"
+                    android:text="Team Details"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/_18sdp"
 
                     android:visibility="gone" />
 
@@ -67,6 +67,8 @@
                             android:fontFamily="@font/rubik_regular"
                             android:paddingTop="@dimen/_8sdp"
                             android:paddingBottom="@dimen/_8sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
                             android:textColor="@color/blue"
                             android:textSize="@dimen/_15sdp" />
                     </androidx.cardview.widget.CardView>
@@ -99,6 +101,8 @@
                             android:fontFamily="@font/rubik_regular"
                             android:paddingTop="@dimen/_8sdp"
                             android:paddingBottom="@dimen/_8sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
                             android:textColor="@color/blue"
                             android:textSize="@dimen/_15sdp" />
                     </androidx.cardview.widget.CardView>
@@ -111,36 +115,14 @@
                         android:src="@drawable/arrowdown_new"
                         android:visibility="gone" />
 
-                    <TableRow style="@style/emi_pay_tab_row">
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/empi_pay_text_view1"
-                            android:fontFamily="@font/rubik_regular"
-                            android:text="My ref Name"
-                            android:textSize="@dimen/_12sdp"
-                            android:visibility="gone"
-
-                            />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/Devider_Style"
-                            android:visibility="gone" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/child"
-                            style="@style/empi_pay_text_view1"
-                            android:fontFamily="@font/rubik_regular"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </TableRow>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/childlist"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
 
-                        android:paddingTop="@dimen/_8sdp"
-                        android:paddingBottom="@dimen/_8sdp" />
+                        />
                     <!--                        </androidx.cardview.widget.CardView>-->
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

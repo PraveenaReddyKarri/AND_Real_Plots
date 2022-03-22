@@ -41,6 +41,8 @@ class DashboardFragment : Fragment() {
 
         binding?.ventures?.setBackgroundResource(R.drawable.card_bg)
         binding?.newreferral?.setBackgroundResource(R.drawable.card_referral)
+        binding?.myreferals?.setBackgroundResource(R.drawable.card_myreferral)
+        binding?.sitevisite?.setBackgroundResource(R.drawable.card_sitevisit)
 
 
         viewModel.data.observe(viewLifecycleOwner, {
@@ -68,6 +70,18 @@ class DashboardFragment : Fragment() {
 //            val pref: SharedPref? = context?.let { SharedPref(it).getmSharedPrefInstance() }
             Navigation.findNavController(view)
                 .navigate(R.id.action_dashboardFragment_to_plotsListFragment)
+
+        }
+        binding?.myreferals?.setOnClickListener { view ->
+//            val pref: SharedPref? = context?.let { SharedPref(it).getmSharedPrefInstance() }
+            Navigation.findNavController(view)
+                .navigate(R.id.action_dashboardFragment_to_myreferalsFragment)
+
+        }
+        binding?.sitevisite?.setOnClickListener { view ->
+//            val pref: SharedPref? = context?.let { SharedPref(it).getmSharedPrefInstance() }
+            Navigation.findNavController(view)
+                .navigate(R.id.action_dashboardFragment_to_siteVisiting)
 
         }
 

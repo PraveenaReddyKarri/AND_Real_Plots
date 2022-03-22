@@ -9,6 +9,7 @@ class SharedPref(private val context: Context) {
     protected val USER_NAME = "user_name"
     protected val CREATEDBY_ID = "createdby_id"
     protected val INTRODUCED_ID = "introduced_id"
+    protected val CONTACT_ID = "contact_id"
     val PREF_NAME = "user_pref"
     val SESSION_KEY = "session_id"
     val USER_ID = "user_id"
@@ -96,6 +97,18 @@ class SharedPref(private val context: Context) {
     fun getIntrocudedId(): String? {
         return sharedPreferences!!.getString(INTRODUCED_ID, "")
     }
+
+
+    fun  setContactid(Contactid: String?){
+        val editor = sharedPreferences!!.edit()
+        editor.putString(CONTACT_ID, Contactid)
+        editor.apply()
+    }
+
+    fun getContactid(): String? {
+        return sharedPreferences!!.getString(CONTACT_ID, "")
+    }
+
 
 //    fun setPassword(UserName: String?) {
 //        val editor = sharedPreferences!!.edit()

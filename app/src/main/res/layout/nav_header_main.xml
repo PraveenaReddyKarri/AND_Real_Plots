@@ -141,7 +141,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="20dp"
                 android:backgroundTint="@color/app_color"
-                android:background="@drawable/ic_baseline_create_new_folder_24"
+                android:background="@drawable/new_referral"
                 android:layout_height="20dp" />
 
             <TextView
@@ -170,7 +170,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="20dp"
                 android:backgroundTint="@color/app_color"
-                android:background="@drawable/ic_baseline_create_new_folder_24"
+                android:background="@drawable/sitevisit"
                 android:layout_height="20dp" />
 
             <TextView
@@ -197,7 +197,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="20dp"
                 android:backgroundTint="@color/app_color"
-                android:background="@drawable/ic_baseline_create_new_folder_24"
+                android:background="@drawable/new_referral"
                 android:layout_height="20dp" />
 
             <TextView
@@ -205,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/raleway_semibold"
-                android:text="My reffrral"
+                android:text="My referral"
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_14sdp" />
 

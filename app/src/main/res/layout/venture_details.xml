@@ -27,6 +27,7 @@
             android:onClick="@{(view)->model.gotoLayoutChart(view)}"
             app:cardCornerRadius="@dimen/_4sdp"
             app:cardElevation="@dimen/_5sdp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
+
                 android:padding="@dimen/_5sdp">
 
                 <RelativeLayout
@@ -57,13 +59,12 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_16sdp" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_30sdp"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="@dimen/_10sdp"
                         android:backgroundTint="@color/black"
-                        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                        android:src="@drawable/grlogonew" />
 
                 </RelativeLayout>
 

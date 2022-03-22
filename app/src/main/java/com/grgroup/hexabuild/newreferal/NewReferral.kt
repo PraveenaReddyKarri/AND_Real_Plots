@@ -126,6 +126,7 @@ class NewReferral : Fragment() ,TextWatcher{
         })
 
 
+
         viewModel.data.observe(viewLifecycleOwner, {
             Utils.closeProgressBar()
 
@@ -238,7 +239,7 @@ class NewReferral : Fragment() ,TextWatcher{
                     binding?.usernameEditText?.getText()?.clear()
                     binding?.aadharEditText?.getText()?.clear()
                     binding?.panEditText?.getText()?.clear()
-                    //                                    binding.editTextTicketNo.setText("");
+                    binding?.profiePic?.setImageBitmap(null)
                     binding?.titlespinner?.setSelection(0)
 
 
@@ -319,42 +320,34 @@ class NewReferral : Fragment() ,TextWatcher{
                                 if (!TextUtils.isEmpty(binding?.panEditText?.getText()?.trim())) {
                                     if (!panMatcher.matches()) {
 
-                                        Toast.makeText(
-                                            activity,
-                                            "Enter valid Pan number",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-
+                                        Toast.makeText(activity, "Enter valid Pan number", Toast.LENGTH_SHORT).show()
                                         return
-
                                     }
-
                                 }
-
-                                if (InternetConnection().isNetworkConnected(requireActivity())) {
-
-
-                                    val request = MobileValidateRequest(
-
-                                        binding?.mobileEditText?.getText().toString()
-
-                                    )
+                                if(filename != null) {
 
 
-                                    viewModel.mobileValidation(request)
+                                    if (InternetConnection().isNetworkConnected(requireActivity())) {
+                                        val request = MobileValidateRequest(
+                                            binding?.mobileEditText?.getText().toString()
+                                        )
+                                        viewModel.mobileValidation(request)
 //                                    viewModel.panValidation(request1)
 
+                                    } else {
+                                        Utils.closeProgressBar()
+                                        Toast.makeText(
+                                            activity,
+                                            "No Internet Please try later",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
 
-                                } else {
-                                    Utils.closeProgressBar()
-                                    Toast.makeText(
-                                        activity,
-                                        "No Internet Please try later",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                }else{
+                                    Toast.makeText(activity, "Upload Image", Toast.LENGTH_SHORT).show()
+
+
                                 }
-
-
                             } else {
                                 Toast.makeText(activity, "Enter valid Sur Name", Toast.LENGTH_SHORT)
                                     .show()
@@ -371,11 +364,7 @@ class NewReferral : Fragment() ,TextWatcher{
 //                            }
 //
                     } else {
-                        Toast.makeText(
-                            activity,
-                            "Enter valid mobile number",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(activity, "Enter valid mobile number", Toast.LENGTH_SHORT).show()
                     }
 //                    } else {
 //                        Toast.makeText(activity, "Enter Pan Number", Toast.LENGTH_SHORT).show()

@@ -21,7 +21,9 @@
     <color name="white">#ffffff</color>
     <color name="black">#123</color>
     <color name="react_gray">#697689</color>
+    <color name="text_gray">#5C5C5B</color>
     <color name="gray">#B5B8BC</color>
+    <color name="gray_thick">#9D9E9E</color>
     <color name="app_color">#9F8359</color>
     <color name="login_bg_light">#E45656</color>
 

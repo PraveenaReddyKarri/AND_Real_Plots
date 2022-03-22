@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.MyreferalsFragmentBinding
+import com.grgroup.hexabuild.utils.SharedPref
 import com.grgroup.hexabuild.venturelist.VentureAdapter
 import com.unnamed.b.atv.model.TreeNode
 import com.unnamed.b.atv.model.TreeNode.TreeNodeClickListener
@@ -69,19 +70,16 @@ class MyreferalsFragment : Fragment() {
         viewModel.getReferalList("0")
 
         viewModel.referallist.observe(viewLifecycleOwner, {
+            val contactid: String = SharedPref(requireContext()).getIntrocudedId().toString()
 
             if (it.isSuccessful) {
                 val response: ArrayList<MyReferralResponse> = it.body()!!
-                val contactid = 5
                 for (i in 0..response.size - 1) {
-                    if (contactid == response.get(i).contactId) {
+                    if (contactid .equals( response.get(i).contactId.toString())) {
                         loginuserdata = response.get(i)
                         binding?.introducer?.text = loginuserdata!!.referralNameTree
-                        binding!!.imagearrow.visibility=View.VISIBLE
-                        binding!!.imagearrow1.visibility=View.VISIBLE
                         binding!!.textview.visibility=View.VISIBLE
                         binding!!.cardLogin.visibility=View.VISIBLE
-                        binding!!.cardParent.visibility=View.VISIBLE
 
                     }
                 }
@@ -91,23 +89,27 @@ class MyreferalsFragment : Fragment() {
                         parentuserdata = response.get(i)
                         binding?.managername?.text = parentuserdata!!.referralNameTree
                         binding!!.imagearrow.visibility=View.VISIBLE
-                        binding!!.imagearrow1.visibility=View.VISIBLE
                         binding!!.textview.visibility=View.VISIBLE
-                        binding!!.cardLogin.visibility=View.VISIBLE
                         binding!!.cardParent.visibility=View.VISIBLE
 
                     }
                     val introducedId = 5
 //                    if (loginuserdata.tblMstReferralId.toString() == response[i].introducedId.toString()) {
-                    if (loginuserdata?.tblMstReferralId == introducedId) {
+                    if (loginuserdata?.tblMstReferralId.toString() == response[i].introducedId.toString()) {
 
-                        childusedata?.add(response[i]);
+                   //     if(!(response[i].referralNameTree.toString().equals(""))){
+                            childusedata?.add(response[i])
+
+                            binding!!.imagearrow1.visibility=View.VISIBLE
 
 
-                    }else{
-                        binding?.child?.text = "No data"
+
 
                     }
+//                    else{
+//                        binding!!.imagearrow1.visibility=View.GONE
+//
+//                    }
                 }
 
                 mAdapter = MyreferalsAdapter(childusedata, context)

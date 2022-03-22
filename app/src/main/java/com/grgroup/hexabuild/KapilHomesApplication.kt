@@ -1,6 +1,7 @@
 package com.grgroup.hexabuild
 
 import android.app.Application
+import com.facebook.drawee.backends.pipeline.Fresco
 
 class KapilHomesApplication : Application() {
 
@@ -9,6 +10,8 @@ class KapilHomesApplication : Application() {
         super.onCreate()
 
         appInstance = this
+        Fresco.initialize(getApplicationContext());
+
     }
 
 

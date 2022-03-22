@@ -70,7 +70,11 @@ class SiteLocation(private val context: Context, var callback: LocationCallback)
             //                activity.startActivityForResult(intent,2);
             (activity as MainActivity).activityResultHandler?.launch(intent) { result: ActivityResult? -> locationPermissions(activity) }
         }
-        builder.setNegativeButton("Cancel") { dialog: DialogInterface, which: Int -> dialog.cancel() }
+        builder.setNegativeButton("Cancel") {
+                dialog: DialogInterface, which: Int -> dialog.cancel()
+            callback.onNewLocationAvailable(null)
+
+        }
         builder.show()
     }
 

@@ -4,10 +4,7 @@ import com.grgroup.hexabuild.login.GetUserIdResponse
 import com.grgroup.hexabuild.login.LoginRequest
 import com.grgroup.hexabuild.login.LoginResponse
 import com.grgroup.hexabuild.myreferals.MyReferralResponse
-import com.grgroup.hexabuild.newreferal.MobileValidateRequest
-import com.grgroup.hexabuild.newreferal.NewReferralRequest
-import com.grgroup.hexabuild.newreferal.NewReferralResponse
-import com.grgroup.hexabuild.newreferal.TitlesResponse
+import com.grgroup.hexabuild.newreferal.*
 import com.grgroup.hexabuild.sitevisit.SiteVisitRequest
 import com.grgroup.hexabuild.sitevisit.SiteVisitResponse
 import okhttp3.MultipartBody
@@ -61,6 +58,8 @@ interface ConnectTwo {
 
     @GET("api/Settings/getContacttitles")
     suspend fun getTitles(): Response<ArrayList<TitlesResponse>>
+
+
 //LIVE
 
     @POST("api/loans/masters/contactmasterNew/SaveSiteTracking_Details")
@@ -73,5 +72,10 @@ interface ConnectTwo {
 
     @GET("/api/Plots/Transactions/PlotBooking/GetCadreDetailsWithReferralId")
     suspend fun getCaderDetails(@Query("Rid") Rid: String): Response<ArrayList<MyReferralResponse>>
-//name, mobile no, desig
+
+
+    @Multipart
+    @POST("/api/loans/masters/contact/MultiFileUpload")
+    suspend fun multiIimaeUploading(@Part file: List<MultipartBody.Part> ): Response<ArrayList<String>>
+
 }
