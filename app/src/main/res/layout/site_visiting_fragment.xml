@@ -82,9 +82,9 @@
                                     android:inputType="textPersonName"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:textSize="@dimen/_12sdp"
                                     android:singleLine="true"
-                                    android:text="@={model.customername}" />
+                                    android:text="@={model.customername}"
+                                    android:textSize="@dimen/_12sdp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -104,9 +104,9 @@
                                     android:digits="0123456789"
                                     android:hint="@string/mobile_no"
                                     android:inputType="phone"
-android:textSize="@dimen/_12sdp"
                                     android:maxLength="10"
-                                    android:text="@={model.contactno}" />
+                                    android:text="@={model.contactno}"
+                                    android:textSize="@dimen/_12sdp" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <TextView
@@ -129,11 +129,11 @@ android:textSize="@dimen/_12sdp"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginEnd="@dimen/_12sdp"
                                 android:background="@drawable/round_corner"
+                                android:focusable="true"
+                                android:gravity="top|left"
                                 android:inputType="textMultiLine"
                                 android:lines="5"
-                                android:gravity="top|left"
                                 android:minLines="5"
-                                android:focusable="true"
                                 android:overScrollMode="always"
                                 android:padding="10dp"
                                 android:scrollbarStyle="insideInset"
@@ -143,16 +143,15 @@ android:textSize="@dimen/_12sdp"
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/referal_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 android:layout_marginTop="@dimen/_12sdp"
                                 android:layout_marginEnd="@dimen/_12sdp"
                                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                                 android:focusable="false"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_12sdp"
                                 android:hint="@string/select_date"
-                                />
+                                android:textSize="@dimen/_12sdp" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -164,21 +163,20 @@ android:textSize="@dimen/_12sdp"
 
 
                             <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:layout_width="match_parent"
-
                                 android:id="@+id/current"
-                                android:text="Share Location*"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginEnd="@dimen/_12sdp"
-                                android:textColor="@color/blue"
                                 android:checked="false"
-                                android:layout_height="wrap_content"/>
+                                android:text="Share Location*"
+                                android:textColor="@color/blue" />
 
 
                             <Button
                                 android:id="@+id/location"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_45sdp"
                                 android:layout_marginStart="@dimen/_12sdp"
@@ -188,51 +186,52 @@ android:textSize="@dimen/_12sdp"
                                 android:drawableEnd="@drawable/ic_baseline_location_on_24"
                                 android:fontFamily="@font/raleway_bold"
                                 android:text="Get Location"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/lat"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_30sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_30sdp" />
+                                android:layout_marginEnd="@dimen/_30sdp"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/lang"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_30sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_30sdp"
 
-                                android:layout_marginEnd="@dimen/_30sdp" />
+                                android:visibility="gone" />
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_15sdp"
-                                >
+                                android:layout_marginTop="@dimen/_15sdp">
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
 
-                                android:text="Select/Capture Images*"
-                                android:layout_marginStart="@dimen/_12sdp"
-                                android:layout_marginTop="@dimen/_8sdp"
-                                android:layout_marginEnd="@dimen/_12sdp"
-                                android:textColor="@color/blue"
-                                android:checked="false"
-                                android:layout_height="wrap_content"/>
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_12sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_12sdp"
+                                    android:checked="false"
+                                    android:text="Select/Capture Images*"
+                                    android:textColor="@color/blue" />
 
                                 <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/captureImage"
                                     android:layout_width="@dimen/_50sdp"
                                     android:layout_height="@dimen/_50sdp"
                                     android:layout_alignParentEnd="true"
                                     android:layout_marginEnd="@dimen/_12sdp"
-                                    android:id="@+id/captureImage"
 
-                                    android:src="@drawable/ic_baseline_camera_alt_24"/>
+                                    android:src="@drawable/ic_baseline_camera_alt_24" />
 
                             </RelativeLayout>
 
