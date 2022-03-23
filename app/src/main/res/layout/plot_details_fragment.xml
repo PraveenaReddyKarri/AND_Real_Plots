@@ -61,374 +61,511 @@
                     android:backgroundTint="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/totallayout"
-
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/close"
-    >
-
                 <LinearLayout
-                    android:id="@+id/standardarea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-                    app:layout_constraintBottom_toTopOf="@+id/area"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/close">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Standard Area"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/sd_area"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:text="@{uimodel.pStandarduomarea +   `  Sq m`}"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/area"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-                    app:layout_constraintBottom_toTopOf="@+id/plotcost"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/standardarea">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Area In Sq Yards"
-                        android:textColor="@color/black"
-
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Devider_Style" />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/sq_yards"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:text="@{uimodel.pAreainsquareyards+ `  sq yd `}"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/plotcost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-
-                    app:layout_constraintBottom_toTopOf="@+id/salable"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-
-                    app:layout_constraintTop_toBottomOf="@+id/area">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Actual Plot Cost"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/p_cost"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:text="@{Utils.INSTANCE.formatAmout(uimodel.pActualPlotcost)}"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/salable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-
-                    app:layout_constraintBottom_toTopOf="@+id/commomarea"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/plotcost">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Saleable Area"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/sal_area"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:text="@{uimodel.pSalablearea}"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/booking_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
+                    android:orientation="vertical"
+                    android:id="@+id/totallayout"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/commomarea">
+                    app:layout_constraintTop_toBottomOf="@+id/close"
+                    >
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/standardarea"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Status"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+                        app:layout_constraintBottom_toTopOf="@+id/area"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/close">
 
-                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Standard Area"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/sd_area"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{uimodel.pStandarduomarea +   `  Sq m`}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
 
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/status"
-                        android:layout_width="0dp"
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/area"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:text="@{uimodel.pBookingstatus}"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+                        app:layout_constraintBottom_toTopOf="@+id/plotcost"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/standardarea">
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Area In Sq Yards"
+                            android:textColor="@color/black"
+
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/sq_yards"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{uimodel.pAreainsquareyards+ `  sq yd `}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/plotcost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintBottom_toTopOf="@+id/salable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@+id/area">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Actual Plot Cost"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/p_cost"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{Utils.INSTANCE.formatAmout(uimodel.pActualPlotcost)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/additions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintBottom_toTopOf="@+id/salable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@+id/area">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Addition Amount"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/addition_amount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{Utils.INSTANCE.formatAmout(uimodel.additions_receivable)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/deductions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintBottom_toTopOf="@+id/salable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@+id/area">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Deduction Amount"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/deduction_amount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{Utils.INSTANCE.formatAmout(uimodel.deductions_receivable)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintBottom_toTopOf="@+id/salable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@+id/area">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Total Plot Cost"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/total_amount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{Utils.INSTANCE.formatAmout(uimodel.total_receivable)}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/salable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintBottom_toTopOf="@+id/commomarea"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/plotcost">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Saleable Area"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/sal_area"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{uimodel.pSalablearea}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/booking_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/commomarea">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Status"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:text="@{uimodel.pBookingstatus}"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/commomarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/salable">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Common Area"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Devider_Style"
+                            />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/commom_area_val"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:text="@{uimodel.pCommonarea}"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/booking_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/booking_status">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:textColor="@color/blue"
+
+                            android:text="@{uimodel.pMembername}"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/booking_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="3.1"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/booking_name">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Date of booking"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_weight="1.5"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:textColor="@color/blue"
+                            android:text="@{Utils.INSTANCE.datetimeFormat(uimodel.pbookingDate)}"
+
+
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/commomarea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/salable">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Common Area"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Devider_Style"
-                        />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/commom_area_val"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:text="@{uimodel.pCommonarea}"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/booking_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/booking_status">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Name"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:textColor="@color/blue"
-
-                        android:text="@{uimodel.pMembername}"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/booking_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="3.1"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/booking_name">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Date of booking"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView style="@style/Devider_Style" />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/date"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_weight="1.5"
-                        android:paddingBottom="@dimen/_3sdp"
-                        android:textColor="@color/blue"
-                        android:text="@{Utils.INSTANCE.datetimeFormat(uimodel.pbookingDate)}"
-
-
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-</LinearLayout>
 
 
                 <LinearLayout
@@ -438,28 +575,28 @@
                     android:visibility="gone"
                     android:id="@+id/errorlayout"
                     android:layout_height="match_parent">
-                <ImageView
-                    android:contentDescription="@string/serverdown"
-                    android:layout_width="100dp"
-                    android:src="@drawable/serverdown"
-                    android:layout_margin="15dp"
-                    android:layout_height="100dp" />
+                    <ImageView
+                        android:contentDescription="@string/serverdown"
+                        android:layout_width="100dp"
+                        android:src="@drawable/serverdown"
+                        android:layout_margin="15dp"
+                        android:layout_height="100dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="13sp"
-                    android:text="@string/server_is_currently_unavailible_n_or_internet_access_is_denied"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:text="@string/server_is_currently_unavailible_n_or_internet_access_is_denied"/>
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
 
-<!--        <include layout="@layout/error"-->
-<!--            android:id="@+id/errorview"-->
-<!--            android:visibility="gone"/>-->
+        <!--        <include layout="@layout/error"-->
+        <!--            android:id="@+id/errorview"-->
+        <!--            android:visibility="gone"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

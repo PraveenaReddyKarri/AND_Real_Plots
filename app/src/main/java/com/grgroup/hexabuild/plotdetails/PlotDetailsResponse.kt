@@ -17,5 +17,9 @@ data class PlotDetailsResponse(
     @SerializedName("pmobileno") var pmobileno : String,
     @SerializedName("preferralname") var preferralname : String,
     @SerializedName("pbooking_date") var pbookingDate : String,
+    @SerializedName("total_receivable") var total_receivable : String,
+    @SerializedName("deductions_receivable") var deductions_receivable : String,
+    @SerializedName("additions_receivable") var additions_receivable : String,
+    @SerializedName("charges") var charges : String,
 
 )

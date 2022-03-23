@@ -55,9 +55,7 @@ class VentureAdapter(private var dataModels: ArrayList<VentureListResponse>?, pr
                 } else {
                     for (row in searchstFiltered!!) {
 
-                        if (row.layoutname.toLowerCase(Locale.ROOT).trim().contains(charString.toLowerCase(
-                                Locale.ROOT
-                            )
+                        if (row.layoutname.toLowerCase(Locale.ROOT).trim().contains(charString.toLowerCase(Locale.ROOT)
                             )
                         ) {
                             filteredList?.add(row)

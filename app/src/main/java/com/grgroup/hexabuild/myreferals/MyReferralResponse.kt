@@ -20,14 +20,12 @@ class MyReferralResponse(
     @SerializedName("referral_name_tree") var referralNameTree: String?
 
 
-)
-{
-    fun getName():String?  {
-         if (referralNameTree.toString().equals(""))
-         {
-        return contactname
-
-    }else{
-             return referralNameTree
-         }
-}}
+) {
+    fun getName(): String? {
+        if (referralNameTree.toString().equals("")) {
+            return contactname
+        } else {
+            return referralNameTree
+        }
+    }
+}

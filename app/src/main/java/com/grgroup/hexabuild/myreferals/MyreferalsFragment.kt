@@ -126,7 +126,7 @@ class MyreferalsFragment : Fragment() {
 //                tView!!.setDefaultNodeLongClickListener(nodeLongClickListener)
 
            //     binding?.treeView?.addView(tView!!.getView())
-                Toast.makeText(activity, "success", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "success", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show()
 

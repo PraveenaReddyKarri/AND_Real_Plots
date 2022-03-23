@@ -80,7 +80,7 @@
                                     android:digits="@string/letters_numbers"
                                     android:hint="@string/name"
                                     android:inputType="textPersonName"
-                                    android:maxLength="40"
+                                    android:maxLength="30"
                                     android:maxLines="1"
                                     android:textSize="@dimen/_12sdp"
                                     android:singleLine="true"
@@ -117,7 +117,7 @@ android:textSize="@dimen/_12sdp"
 
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginEnd="@dimen/_12sdp"
-                                android:text="Address"
+                                android:text="Address*"
                                 android:textColor="@color/blue"
                                 android:textSize="@dimen/_15sdp" />
 
@@ -167,7 +167,7 @@ android:textSize="@dimen/_12sdp"
                                 android:layout_width="match_parent"
 
                                 android:id="@+id/current"
-                                android:text="Share Location"
+                                android:text="Share Location*"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginEnd="@dimen/_12sdp"
@@ -217,7 +217,7 @@ android:textSize="@dimen/_12sdp"
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
 
-                                android:text="Select/Capture Images"
+                                android:text="Select/Capture Images*"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginEnd="@dimen/_12sdp"

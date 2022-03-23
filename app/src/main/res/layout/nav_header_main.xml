@@ -205,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="@font/raleway_semibold"
-                android:text="My referral"
+                android:text="My referrals"
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_14sdp" />
 

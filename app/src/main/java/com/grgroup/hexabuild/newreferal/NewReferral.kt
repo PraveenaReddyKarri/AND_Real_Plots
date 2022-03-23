@@ -178,7 +178,7 @@ class NewReferral : Fragment() ,TextWatcher{
 
                     Toast.makeText(
                         getActivity(),
-                        "Something went wrong",
+                        "Pan number already exists",
                         Toast.LENGTH_SHORT
                     ).show()
 
@@ -196,22 +196,22 @@ class NewReferral : Fragment() ,TextWatcher{
             Utils.closeProgressBar()
             if (it.isSuccessful) {
                 val response: ArrayList<String> = it.body()!!
-                filename=response[1]
+                filename = response[1]
 
 //                if (response.equals("0")) {
 //                    sendAllDataToAPI()
 
-                    Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(getActivity(), "Image uploaded", Toast.LENGTH_SHORT).show()
 
-                } else {
+            } else {
 
-                    Toast.makeText(
-                        getActivity(),
-                        "ERROR",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                Toast.makeText(
+                    getActivity(),
+                    "ERROR",
+                    Toast.LENGTH_SHORT
+                ).show()
 
-                }
+            }
 
 
 //            } else {
@@ -239,17 +239,15 @@ class NewReferral : Fragment() ,TextWatcher{
                     binding?.usernameEditText?.getText()?.clear()
                     binding?.aadharEditText?.getText()?.clear()
                     binding?.panEditText?.getText()?.clear()
-                    binding?.profiePic?.setImageBitmap(null)
+                    binding?.profiePic?.setImageResource(R.drawable.ic_baseline_perm_identity_24)
                     binding?.titlespinner?.setSelection(0)
-
+                    filename = null
 
                 } else {
                     Toast.makeText(getActivity(), "Something went  wrong", Toast.LENGTH_SHORT)
                         .show()
 
                 }
-
-
             } else {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show()
 
@@ -279,7 +277,7 @@ class NewReferral : Fragment() ,TextWatcher{
                     binding?.surnameEditText?.text.toString(),
             pPanNumber = binding?.panEditText?.text.toString().toUpperCase(Locale.ROOT),
             pintroducedid = introducedid,
-           pPhoto  =filename.toString()
+            pPhoto = filename.toString()
 
         )
         viewModel.saveData(request)
@@ -314,13 +312,19 @@ class NewReferral : Fragment() ,TextWatcher{
 
                     if (!(binding?.mobileEditText?.text.toString().trim().length < 10)) {
 
+//
+
 //                            if (!(binding?.panEditText?.text.toString().trim().length < 10)) {
                         if (!(binding?.usernameEditText?.text.toString().trim().length < 2)) {
                             if (!(binding?.surnameEditText?.text.toString().trim().length < 1)) {
                                 if (!TextUtils.isEmpty(binding?.panEditText?.getText()?.trim())) {
                                     if (!panMatcher.matches()) {
 
-                                        Toast.makeText(activity, "Enter valid Pan number", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            activity,
+                                            "Enter valid Pan number",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                         return
                                     }
                                 }
@@ -487,8 +491,10 @@ class NewReferral : Fragment() ,TextWatcher{
 
                     binding?.profiePic?.setImageURI(uri)
 //
-                    val filePart: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.getName(),
-                        RequestBody.create("image/*".toMediaTypeOrNull(), file));
+                    val filePart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                        "file", file.getName(),
+                        RequestBody.create("image/*".toMediaTypeOrNull(), file)
+                    );
 //
 //                    Log.e("hell",file.toString())
                     viewModel.imageUpload(filePart)

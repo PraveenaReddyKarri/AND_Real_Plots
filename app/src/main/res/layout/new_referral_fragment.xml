@@ -83,23 +83,6 @@
                             android:layout_marginBottom="@dimen/_5sdp"
                             android:background="@color/black" />
 
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/cadernamespinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_12sdp"
-                            android:layout_marginEnd="@dimen/_12sdp"
-                            android:spinnerMode="dropdown"
-
-                            android:tooltipText="Title"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:layout_marginStart="@dimen/_12sdp"
-                            android:layout_marginEnd="@dimen/_12sdp"
-                            android:layout_marginBottom="@dimen/_5sdp"
-                            android:background="@color/black" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/textInputLayout"
@@ -117,6 +100,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/name"
+                                android:maxLength="30"
 
                                 android:digits="@string/letters_numbers"
                                 android:inputType="textPersonName"
@@ -217,8 +201,6 @@
                             android:id="@+id/profie_pic"
                             android:scaleType="fitXY"
                             android:background="@drawable/round_corner"
-
-
                             app:srcCompat="@drawable/ic_baseline_perm_identity_24" />
 
 

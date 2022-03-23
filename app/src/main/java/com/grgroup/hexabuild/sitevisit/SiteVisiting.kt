@@ -167,6 +167,9 @@ class SiteVisiting : Fragment(), LocationCallback {
                     binding?.address?.getText()?.clear()
                     binding?.referalDate?.text = ""
                     binding?.current?.isChecked= false
+                    filename=null
+                    lat=0.0
+                    lng=0.0
 
 
                 } else {
@@ -204,7 +207,7 @@ class SiteVisiting : Fragment(), LocationCallback {
 //                if (response.equals("0")) {
 //                    sendAllDataToAPI()
 
-                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(getActivity(), "Image uploaded", Toast.LENGTH_SHORT).show()
 
             } else {
 
