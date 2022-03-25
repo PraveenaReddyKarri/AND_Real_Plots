@@ -254,6 +254,9 @@ class SiteVisiting : Fragment(), LocationCallback {
 
                         if (!(binding?.mobileEditText?.text.toString().trim().length < 10)) {
 
+                            if (!(binding?.mobileEditText?.text.toString().trim().startsWith("0")))
+                            {
+
                             if (!(binding?.usernameEditText?.text.toString().trim().length < 2)) {
                                 if (filename != null) {
 
@@ -277,8 +280,14 @@ class SiteVisiting : Fragment(), LocationCallback {
                                 Toast.makeText(activity, "Enter valid Name", Toast.LENGTH_SHORT)
                                     .show()
                             }
-//
-//
+                            } else {
+                                Toast.makeText(
+                                    activity,
+                                    "Enter valid mobile number",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
                         } else {
                             Toast.makeText(
                                 activity,

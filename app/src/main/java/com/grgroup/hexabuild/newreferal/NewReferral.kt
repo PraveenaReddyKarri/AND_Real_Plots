@@ -312,7 +312,10 @@ class NewReferral : Fragment() ,TextWatcher{
 
                     if (!(binding?.mobileEditText?.text.toString().trim().length < 10)) {
 
-//
+                        if (!(binding?.mobileEditText?.text.toString().trim().startsWith("0")))
+                        {
+
+
 
 //                            if (!(binding?.panEditText?.text.toString().trim().length < 10)) {
                         if (!(binding?.usernameEditText?.text.toString().trim().length < 2)) {
@@ -366,7 +369,11 @@ class NewReferral : Fragment() ,TextWatcher{
 //                                    Toast.LENGTH_SHORT
 //                                ).show()
 //                            }
-//
+
+                        } else {
+                            Toast.makeText(activity, "Enter valid mobile number", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     } else {
                         Toast.makeText(activity, "Enter valid mobile number", Toast.LENGTH_SHORT).show()
                     }

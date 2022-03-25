@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.grgroup.hexabuild.R
 import com.grgroup.hexabuild.databinding.VentureListFragmentBinding
 import com.grgroup.hexabuild.utils.Utils
+import okhttp3.internal.indexOfControlOrNonAscii
+import java.util.*
 
-class VentureListFragment : Fragment() {
+class VentureListFragment : Fragment(), VentureAdapter.FilterDataClickKistener {
 
 
     private var mAdapter: VentureAdapter? = null
@@ -63,7 +65,7 @@ class VentureListFragment : Fragment() {
                  data= it.body().toString()
 
                 if (it.body() != null && it.body()!!.isNotEmpty()) {
-                    mAdapter = VentureAdapter(it.body(), context)
+                    mAdapter = VentureAdapter(it.body(), context, this)
                     binding?.recyclerView?.layoutManager = LinearLayoutManager(context)
                     binding?.recyclerView?.adapter = (mAdapter)
                     binding!!.noDataFound.visibility = View.GONE
@@ -97,44 +99,24 @@ class VentureListFragment : Fragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
-
             override fun onQueryTextChange(qString: String): Boolean {
 
-                if(data?.contains(qString)!!){
-                    queryString = qString
-                    mAdapter!!.getFilter()!!.filter(qString)
-                    binding!!.noDataFound.visibility = View.GONE
-                    binding!!.recyclerView.visibility=View.VISIBLE
+                queryString = qString
+                mAdapter!!.getFilter()!!.filter(qString)
 
-                } else{
-                    binding!!.noDataFound.visibility = View.VISIBLE
-                    binding!!.recyclerView.visibility=View.GONE
 
-                }
                 return false
-
             }
 
             override fun onQueryTextSubmit(qString: String): Boolean {
 //                showProgress()
+                queryString = qString
+                mAdapter!!.getFilter()!!.filter(qString)
 
-                if(data?.contains(qString)!!){
-                    queryString = qString
-                    mAdapter!!.getFilter()!!.filter(qString)
-                    binding!!.noDataFound.visibility = View.GONE
-                    binding!!.recyclerView.visibility=View.VISIBLE
 
-                } else{
-                    binding!!.noDataFound.visibility = View.VISIBLE
-                    binding!!.recyclerView.visibility=View.GONE
-
-                }
                 return false
-
-
             }
         })
-
 
 
     }
@@ -148,4 +130,26 @@ class VentureListFragment : Fragment() {
     }
 
 
+
+    override fun filterresult(dataModels: ArrayList<VentureListResponse>?) {
+
+        dataModels?.let { dataModelsNotNull ->
+            showNoData(dataModelsNotNull.isNotEmpty())
+        } ?: kotlin.run {
+            showNoData(false)
+        }
+
+
+    }
+
+    fun showNoData(shouldShowData: Boolean) {
+        if (shouldShowData) {
+            binding!!.noDataFound.visibility = View.GONE
+            binding!!.recyclerView.visibility = View.VISIBLE
+        } else {
+            binding!!.noDataFound.visibility = View.VISIBLE
+            binding!!.recyclerView.visibility = View.GONE
+
+        }
+    }
 }

@@ -1,6 +1,8 @@
 package com.grgroup.hexabuild.venturelist
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -11,8 +13,9 @@ import com.grgroup.hexabuild.databinding.VentureDetailsBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
-class VentureAdapter(private var dataModels: ArrayList<VentureListResponse>?, private val context: Context?) :RecyclerView.Adapter<VentureAdapter.ViewHolder>() {
+class VentureAdapter(private var dataModels: ArrayList<VentureListResponse>?, private val context: Context?,val mListener: FilterDataClickKistener) :RecyclerView.Adapter<VentureAdapter.ViewHolder>() {
 
+    private val TAG = "VentureAdapter"
     private var searchstFiltered: ArrayList<VentureListResponse>? = null
 
     init{
@@ -48,19 +51,17 @@ class VentureAdapter(private var dataModels: ArrayList<VentureListResponse>?, pr
         return object : Filter() {
             override fun performFiltering(charSequence: CharSequence): FilterResults {
                 val charString = charSequence.toString()
-                var filteredList: ArrayList<VentureListResponse>? =
-                    ArrayList()
+                var filteredList: ArrayList<VentureListResponse>? = ArrayList()
                 if (charString.isEmpty()) {
                     filteredList = searchstFiltered
                 } else {
                     for (row in searchstFiltered!!) {
-
-                        if (row.layoutname.toLowerCase(Locale.ROOT).trim().contains(charString.toLowerCase(Locale.ROOT)
-                            )
+                        if (row.layoutname.toLowerCase(Locale.ROOT).trim()
+                                .contains(charString.toLowerCase(Locale.ROOT))
                         ) {
+                            Log.d(TAG, "performFiltering:  adding in list : " + row.layoutname)
                             filteredList?.add(row)
                         }
-
                     }
                 }
                 val filterResults = FilterResults()
@@ -70,9 +71,16 @@ class VentureAdapter(private var dataModels: ArrayList<VentureListResponse>?, pr
 
             override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
                 dataModels = filterResults.values as ArrayList<VentureListResponse>?
+                mListener.filterresult(dataModels)
                 notifyDataSetChanged()
             }
         }
+
+
+    }
+
+    interface FilterDataClickKistener {
+        fun filterresult(dataModels: ArrayList<VentureListResponse>?)
     }
 
 
