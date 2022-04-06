@@ -38,6 +38,7 @@ class SiteLocation(private val context: Context, var callback: LocationCallback)
     private val connect: Connect? = null
     var FINE_LOCATION_REQUEST_CODE = 101
     var COARSE_LOCATION_REQUEST_CODE = 102
+    var locationcheck : Boolean ?= false
 
 
     fun locationPermissions(activity: Activity) {
@@ -96,16 +97,10 @@ class SiteLocation(private val context: Context, var callback: LocationCallback)
 
         try {
 
-            val criteria = Criteria()
-            criteria.accuracy = Criteria.ACCURACY_LOW
-            criteria.powerRequirement = Criteria.POWER_LOW
-            criteria.isAltitudeRequired = false
-            criteria.isBearingRequired = false
-
             locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
             if(locationManager!=null){
-                var gpsavailable= locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
-                var networkavailable= locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+                val gpsavailable= locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                val networkavailable= locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 
                 if(!gpsavailable &&!networkavailable){
                     locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
@@ -140,25 +135,33 @@ class SiteLocation(private val context: Context, var callback: LocationCallback)
 //            }
 //        }
     fun statusCheck(activity: Activity) {
-        Toast.makeText(activity, "status check", Toast.LENGTH_SHORT).show()
 
         locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (!locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps(activity)
-        }else{
-            getCurrentLocation()
+        locationManager?.let { myLocationManager ->
+            if (!myLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                buildAlertMessageNoGps(activity)
+            }else{
+                getCurrentLocation()
+            }
         }
+
     }
 
     private fun buildAlertMessageNoGps(activity: Activity) {
         val builder = AlertDialog.Builder(context)
         builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
             .setCancelable(false)
-            .setPositiveButton("Yes") { dialog, id -> activity.startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)) }
+            .setPositiveButton("Yes") {
+                    dialog, id -> activity.startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+
+                locationcheck = true
+            }
             .setNegativeButton("No") { dialog, id -> dialog.cancel() }
         val alert = builder.create()
         alert.show()
     }
+
+
 
     @SuppressLint("MissingPermission")
     fun getLocations() {
@@ -207,7 +210,6 @@ class SiteLocation(private val context: Context, var callback: LocationCallback)
                 var  mlon = location.longitude
                 var mLogn = java.lang.Double.toString(mlon)
                 var mLatd = java.lang.Double.toString(mlat)
-                showToast("Current Location: " + location.latitude + ", " + location.longitude + ", " + location.time)
 
                 callback.onNewLocationAvailable(location)
 

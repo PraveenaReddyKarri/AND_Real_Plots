@@ -82,6 +82,11 @@ class MyreferalsFragment : Fragment() {
                         binding!!.cardLogin.visibility=View.VISIBLE
 
                     }
+                    else {
+                        binding!!.textview.visibility=View.GONE
+                        binding!!.cardLogin.visibility=View.GONE
+
+                    }
                 }
                 for (i in 0..response.size - 1) {
 
@@ -91,6 +96,11 @@ class MyreferalsFragment : Fragment() {
                         binding!!.imagearrow.visibility=View.VISIBLE
                         binding!!.textview.visibility=View.VISIBLE
                         binding!!.cardParent.visibility=View.VISIBLE
+
+                    }else{
+                        binding!!.imagearrow.visibility=View.GONE
+                        binding!!.textview.visibility=View.GONE
+                        binding!!.cardParent.visibility=View.GONE
 
                     }
                     val introducedId = 5
@@ -106,10 +116,10 @@ class MyreferalsFragment : Fragment() {
 
 
                     }
-//                    else{
-//                        binding!!.imagearrow1.visibility=View.GONE
-//
-//                    }
+                    else{
+                        binding!!.imagearrow1.visibility=View.GONE
+
+                    }
                 }
 
                 mAdapter = MyreferalsAdapter(childusedata, context)

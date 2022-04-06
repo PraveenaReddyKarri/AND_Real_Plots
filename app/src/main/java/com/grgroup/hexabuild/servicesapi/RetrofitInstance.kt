@@ -46,8 +46,11 @@ object RetrofitInstance {
 
 
         Retrofit.Builder()
-            .baseUrl("http://13.234.192.218:65493")// testing
-//            .baseUrl("http://13.234.192.218:65446")//live
+//            .baseUrl("http://13.234.192.218:65493")// testing
+            .baseUrl("http://13.234.192.218:65446")//live
+//           dash branch
+//centerl=invertory
+//                   branch=kapilhomes
 //            .baseUrl("http://13.234.192.218:65486")//image
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)

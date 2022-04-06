@@ -257,29 +257,29 @@ class SiteVisiting : Fragment(), LocationCallback {
                             if (!(binding?.mobileEditText?.text.toString().trim().startsWith("0")))
                             {
 
-                            if (!(binding?.usernameEditText?.text.toString().trim().length < 2)) {
-                                if (filename != null) {
+                                if (!(binding?.usernameEditText?.text.toString().trim().length < 2)) {
+                                    if (filename != null) {
 
-                                    if (lat != 0.0 && lng != 0.0) {
-                                        sendAllDataToAPI()
+                                        if (lat != 0.0 && lng != 0.0) {
+                                            sendAllDataToAPI()
 
+                                        } else {
+                                            Toast.makeText(
+                                                activity,
+                                                "Share location",
+                                                Toast.LENGTH_SHORT
+                                            )
+                                                .show()
+                                        }
                                     } else {
-                                        Toast.makeText(
-                                            activity,
-                                            "Share location",
-                                            Toast.LENGTH_SHORT
-                                        )
+                                        Toast.makeText(activity, "Upload Images", Toast.LENGTH_SHORT)
                                             .show()
                                     }
+
                                 } else {
-                                    Toast.makeText(activity, "Upload Images", Toast.LENGTH_SHORT)
+                                    Toast.makeText(activity, "Enter valid Name", Toast.LENGTH_SHORT)
                                         .show()
                                 }
-
-                            } else {
-                                Toast.makeText(activity, "Enter valid Name", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
                             } else {
                                 Toast.makeText(
                                     activity,
@@ -562,5 +562,16 @@ class SiteVisiting : Fragment(), LocationCallback {
             siteLocation?.removeLocation()
         }
     }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        if (siteLocation?.locationcheck == true) let {
+            siteLocation?.locationPermissions(requireActivity())
+            siteLocation?.statusCheck(requireActivity()) }
+
+    }
+
 
 }

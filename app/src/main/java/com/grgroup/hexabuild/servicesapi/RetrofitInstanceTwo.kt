@@ -43,11 +43,15 @@ object RetrofitInstanceTwo {
             .writeTimeout(5, TimeUnit.MINUTES)
             .build()
 
-
+//        User Name:   gopiraju
+//                Password:  grestate@2021
         Retrofit.Builder()
 //            .baseUrl("http://13.234.192.218:65495")// testing
-//            .baseUrl("http://13.234.192.218:65448")
-            .baseUrl("http://13.234.192.218:65486")//newreff
+            .baseUrl("http://13.234.192.218:65448")//live
+//           .baseUrl("http://13.234.192.218:65449")
+//            .baseUrl("http://13.234.192.218:65486")//newreff
+//            .baseUrl("http://13.234.192.218:65449")//live
+
 
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)

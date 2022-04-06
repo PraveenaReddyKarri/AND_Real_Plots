@@ -15,288 +15,287 @@
     </data>
 
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/dashboard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:cardBackgroundColor="@color/bluelight"
+
+                    app:cardCornerRadius="@dimen/_5sdp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:text="Welcome to"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_20sdp" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="@dimen/_140sdp"
+                        android:layout_height="@dimen/_110sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        app:srcCompat="@drawable/grlogonew" />
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/dashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:baselineAligned="false">
 
                 <LinearLayout
-                    android:id="@+id/linear_top"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_5sdp">
+
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/ventures"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_80sdp"
                         android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
                         android:layout_marginEnd="@dimen/_8sdp"
-                        app:cardBackgroundColor="@color/bluelight"
 
-                        app:cardCornerRadius="@dimen/_5sdp">
 
-                        <TextView
+
+                        android:layout_weight="1"
+
+                        app:cardElevation="@dimen/_5sdp"
+
+                        >
+
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_30sdp"
-                            android:layout_marginTop="@dimen/_15sdp"
-                            android:fontFamily="@font/raleway_bold"
-                            android:paddingTop="@dimen/_10sdp"
-                            android:paddingBottom="@dimen/_10sdp"
-                            android:text="Welcome to"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_20sdp" />
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/image"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/plot"
+                                android:tint="@color/white"
+                                android:visibility="visible" />
 
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="@dimen/_100sdp"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="@dimen/_16sdp"
-                            android:layout_marginTop="@dimen/_50sdp"
-                            android:layout_marginEnd="@dimen/_16sdp"
-                            android:layout_marginBottom="@dimen/_15sdp"
-                            app:srcCompat="@drawable/grlogonew" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_toEndOf="@id/image"
+                                android:fontFamily="@font/raleway_semibold"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                android:text="@string/layouts"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+                        </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/myreferals"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ripple_home_notif"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp">
+
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/new_image2"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/referral_icon"
+                                android:tint="@color/white"
+                                android:visibility="visible" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/raleway_semibold"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                android:text="My Referrals"
+
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
                 </LinearLayout>
 
-
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_marginBottom="@dimen/_15sdp"
-                    android:baselineAligned="false">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/newreferral"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingBottom="@dimen/_5sdp">
+                        android:background="@drawable/ripple_home_notif"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_5sdp">
 
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/ventures"
+                        <LinearLayout
+                            android:id="@+id/linearLayout2"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_30sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-
-
-                            android:layout_weight="1"
-
-                            app:cardElevation="@dimen/_5sdp"
-
-                            >
-
-
-                            <LinearLayout
-                                android:id="@+id/linearLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/new_image"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
                                 android:layout_gravity="center"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/image"
-                                    android:layout_width="@dimen/_35sdp"
-                                    android:layout_height="@dimen/_35sdp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/plot"
-                                    android:tint="@color/white"
-                                    android:visibility="visible" />
+                                android:src="@drawable/referral_icon"
+                                android:tint="@color/white"
+                                android:visibility="visible" />
 
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_toEndOf="@id/image"
-                                    android:fontFamily="@font/raleway_semibold"
-                                    android:gravity="center"
-                                    android:paddingTop="@dimen/_10sdp"
-                                    android:paddingBottom="@dimen/_10sdp"
-                                    android:text="@string/layouts"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_15sdp" />
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/myreferals"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_150sdp"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_15sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ripple_home_notif"
-                            app:cardCornerRadius="@dimen/_10sdp"
-                            app:cardElevation="@dimen/_5sdp"
-                            android:layout_marginBottom="@dimen/_15sdp">
-
-
-                            <LinearLayout
-                                android:id="@+id/linearLayout3"
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:fontFamily="@font/raleway_semibold"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                android:text="New Referrals"
 
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/new_image2"
-                                    android:layout_width="@dimen/_35sdp"
-                                    android:layout_height="@dimen/_35sdp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/referral_icon"
-                                    android:tint="@color/white"
-                                    android:visibility="visible" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+                        </LinearLayout>
 
+                    </androidx.cardview.widget.CardView>
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/raleway_semibold"
-                                    android:gravity="center"
-                                    android:paddingTop="@dimen/_10sdp"
-                                    android:paddingBottom="@dimen/_10sdp"
-                                    android:text="My Referrals"
-
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_15sdp" />
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/sitevisite"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        app:cardElevation="@dimen/_5sdp"
+
+                        >
 
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/newreferral"
+                        <LinearLayout
+                            android:id="@+id/linearLayouttwo"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_150sdp"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_30sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
-                            android:layout_weight="1"
-                            android:background="@drawable/ripple_home_notif"
-                            app:cardCornerRadius="@dimen/_10sdp"
-                            app:cardElevation="@dimen/_5sdp">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/imageone"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/sitevisit"
+                                android:tint="@color/white"
+                                android:visibility="visible" />
 
 
-                            <LinearLayout
-                                android:id="@+id/linearLayout2"
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:layout_toEndOf="@id/imageone"
+                                android:fontFamily="@font/raleway_semibold"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                android:text="Site Visit"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_15sdp" />
+                        </LinearLayout>
 
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/new_image"
-                                    android:layout_width="@dimen/_35sdp"
-                                    android:layout_height="@dimen/_35sdp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/referral_icon"
-                                    android:tint="@color/white"
-                                    android:visibility="visible" />
-
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="@font/raleway_semibold"
-                                    android:gravity="center"
-                                    android:paddingTop="@dimen/_10sdp"
-                                    android:paddingBottom="@dimen/_10sdp"
-                                    android:text="New Referrals"
-
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_15sdp" />
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/sitevisite"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_100sdp"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_15sdp"
-                            android:layout_marginEnd="@dimen/_8sdp"
-                            android:layout_weight="1"
-                            android:layout_marginBottom="@dimen/_15sdp"
-                            app:cardElevation="@dimen/_5sdp"
-
-                            >
-
-
-                            <LinearLayout
-                                android:id="@+id/linearLayouttwo"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/imageone"
-                                    android:layout_width="@dimen/_35sdp"
-                                    android:layout_height="@dimen/_35sdp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/sitevisit"
-                                    android:tint="@color/white"
-                                    android:visibility="visible" />
-
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_toEndOf="@id/imageone"
-                                    android:fontFamily="@font/raleway_semibold"
-                                    android:gravity="center"
-                                    android:paddingTop="@dimen/_10sdp"
-                                    android:paddingBottom="@dimen/_10sdp"
-                                    android:text="Site Visit"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_15sdp" />
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </ScrollView>
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>

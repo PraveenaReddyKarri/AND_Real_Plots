@@ -41,6 +41,7 @@
     <string name="go_to_settings">GOTO SETTINGS</string>
     <string name="ic_photo">&#xe111;</string>
     <string name="select_date">Select Date*</string>
+    <string name="leading_real_estate_company_in_hyderabad">Leading Real estate company in Hyderabad</string>
 
     <string-array name="amount_arrays">
 <!--        <item> Select Title</item>-->
