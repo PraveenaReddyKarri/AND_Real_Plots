@@ -14,23 +14,11 @@ class KapilHomesApplication : Application() {
 
     }
 
-
-companion object {
+    companion object {
     private var appInstance: KapilHomesApplication? = null
 
 
-//    @Override
-//    public void onCreate()
-//    {
-//        super.onCreate()
-////        Fabric.with(this, new Crashlytics());
-//        //        Fabric.with(this, new Crashlytics());
-//        KapilHomesApplication.appInstance = this
-//    }
-
-
-
-    fun getInstance(): KapilHomesApplication? {
+        fun getInstance(): KapilHomesApplication? {
 
         if (appInstance ==null){
             appInstance =

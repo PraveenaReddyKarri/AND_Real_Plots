@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        viewModel.response.observe(viewLifecycleOwner, {
+        viewModel.response.observe(viewLifecycleOwner) {
             Utils.closeProgressBar()
 
             if (it.isSuccessful) {
@@ -63,7 +63,7 @@ class LoginFragment : Fragment() {
                     Toast.makeText(getActivity(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    viewModel.getId( binding?.usernameEditText?.getText().toString())
+                    viewModel.getId(binding?.usernameEditText?.getText().toString())
 
                     saveResponseInSharedPref(response, view)
 
@@ -72,22 +72,22 @@ class LoginFragment : Fragment() {
 //                    Toast.makeText(getActivity(), "Login Success", Toast.LENGTH_SHORT).show()
                 }
 
-
+                grestate@2021
             } else {
                 Toast.makeText(getActivity(), "Unauthorized User", Toast.LENGTH_SHORT).show();
 
             }
-        })
+        }
 
 
-        viewModel.data.observe(viewLifecycleOwner, {
+        viewModel.data.observe(viewLifecycleOwner) {
 //            Utils.closeProgressBar()
             val pref: SharedPref? = context?.let { SharedPref(it).getmSharedPrefInstance() }
 
             if (it.isSuccessful) {
                 val response: ArrayList<GetUserIdResponse> = it.body()!!
 
-                if(response.size>0){
+                if (response.size > 0) {
                     pref?.setCreatedbyId(response.get(0).pUserID)
                     pref?.setIntrocudedId(response.get(0).pContactID)
 
@@ -119,7 +119,7 @@ class LoginFragment : Fragment() {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show();
 
             }
-        })
+        }
 
     }
 

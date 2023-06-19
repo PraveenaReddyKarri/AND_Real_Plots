@@ -151,7 +151,7 @@ class SiteVisiting : Fragment(), LocationCallback {
 //        }
 
 
-        viewModel.response.observe(viewLifecycleOwner, {
+        viewModel.response.observe(viewLifecycleOwner) {
             Utils.closeProgressBar()
 
 
@@ -166,10 +166,10 @@ class SiteVisiting : Fragment(), LocationCallback {
                     binding?.usernameEditText?.getText()?.clear()
                     binding?.address?.getText()?.clear()
                     binding?.referalDate?.text = ""
-                    binding?.current?.isChecked= false
-                    filename=null
-                    lat=0.0
-                    lng=0.0
+                    binding?.current?.isChecked = false
+                    filename = null
+                    lat = 0.0
+                    lng = 0.0
 
 
                 } else {
@@ -183,9 +183,9 @@ class SiteVisiting : Fragment(), LocationCallback {
                 Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_SHORT).show()
 
             }
-        })
+        }
 
-        viewModel.image.observe(viewLifecycleOwner, {
+        viewModel.image.observe(viewLifecycleOwner) {
             Utils.closeProgressBar()
             if (it.isSuccessful) {
                 val response: ArrayList<String> = it.body()!!
@@ -224,7 +224,7 @@ class SiteVisiting : Fragment(), LocationCallback {
 //                Toast.makeText(getActivity(), "Unauthorized User", Toast.LENGTH_SHORT).show();
 //
 //            }
-        })
+        }
 
 
     }

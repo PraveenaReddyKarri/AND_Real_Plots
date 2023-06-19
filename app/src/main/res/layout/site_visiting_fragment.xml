@@ -231,7 +231,8 @@
                                     android:layout_alignParentEnd="true"
                                     android:layout_marginEnd="@dimen/_12sdp"
 
-                                    android:src="@drawable/ic_baseline_camera_alt_24" />
+                                    android:src="@drawable/ic_baseline_camera_alt_24"
+                                    />
 
                             </RelativeLayout>
 
